@@ -84,34 +84,54 @@
         <section class="inner-page">
             <div class="container">
               <p>
-                <form action="submit.php" method="post">
+                <form action="/storeData" method="post">
                   
                     <label for="activity">Activity:</label>
                     <input type="activity" id="activity" name="activity" required><br><br>
                     <label for="description">Description:</label><br>
                     <textarea id="description" name="description" rows="4" required></textarea><br><br>
-                    <input type="checkbox" id="equipment" name="equipment" onchange="requiresEquipment()">
-                    <label for="equipment">Requires equipment/gear?</label><br><br>
-                    <!-- Additional prompt that is initially hidden -->
+
+
+                    <label for="equipment">Requires equipment/gear?</label><br>
+                    <input type="radio" id="equipmentYes" name="equipment" value="True" onchange="requiresEquipment()">
+                    <label for="equipmentYes">Yes</label><br>
+                    <input type="radio" id="equipmentNo" name="equipment" value="False" checked onchange="requiresEquipment()">
+                    <label for="equipmentNo">No</label><br><br>
+                    <!-- Additional prompt that is initially hidden, shown only if 'Yes' is selected -->
                     <div class="equipmentConditional-prompt">
-                        <label for="whatEquipment">List the required equipment:</label>
-                        <input type="text" id="whatEquipment" name="whatEquipment"><br><br>
+                        <label for="equipment_description">Description of required equipment:</label>
+                        <input type="text" id="equipment_description" name="equipment_description"><br><br>
                     </div>
-                    <input type="checkbox" id="city" name="city" onchange="specificCity()">
+
+                    <!--<input type="checkbox" id="city" name="city" onchange="specificCity()">
                     <label for="city">Is in a certain city?</label><br><br>
-                    <!-- Additional prompt that is initially hidden -->
+                    Additional prompt that is initially hidden 
                     <div class="cityConditional-prompt">
                         <label for="whichCity">Which city?</label>
                         <input type="text" id="whichCity" name="whichCity"><br><br>
-                    </div>
+                    </div>-->
                     <label for="price">Price Range (per person):</label>
                     <select id="price" name="price">
                         <option value="free">Free</option>
-                        <option value="fifteen">$0-$15</option>
-                        <option value="thirty">$15-$30</option>
-                        <option value="fifty">$30-50</option>
-                        <option value="expensive">$50+</option>
+                        <option value="$0-$15">$0-$15</option>
+                        <option value="$15-$30">$15-$30</option>
+                        <option value="$30-50">$30-50</option>
+                        <option value="$50+">$50+</option>
                     </select><br><br>
+
+                    <label for="location">City Location:</label><br>
+                    <select id="location" name="location">
+                      <option value="Provo">Provo</option>
+                      <option value="Orem">Orem</option>
+                      <option value="Lehi">Lehi</option>
+                      <option value="American Fork">American Fork</option>
+                      <option value="Salt Lake City">Salt Lake City</option>
+                      <option value="Midway">Midway</option>
+                      <option value="Park City">Park City</option>
+                      <option value="Other">Other</option>
+                      <option value="Doesn't Matter">Doesn't Matter</option>
+                    </select><br><br>
+                    
                     <!-- If we want the Type to be a drop down, use this:
                     <label for="type">Type:</label>
                     <select id="type" name="type">
@@ -120,18 +140,17 @@
                         <option value="dateNight">Date night with my significant other</option>
                         <option value="group">Group activity</option>
                     </select><br> -->
-                    <label for="type">Type (check all that could apply):</label><br>
-                    <input type="checkbox" id="me" name="type[]" value="me">
-                    <label for="me">Just me, myself, & I</label><br>
-                    <input type="checkbox" id="firstDate" name="type[]" value="firstDate">
-                    <label for="firstDate">First date</label><br>
-                    <input type="checkbox" id="dateNight" name="type[]" value="dateNight">
-                    <label for="dateNight">Date night with my significant other</label><br>
-                    <input type="checkbox" id="group" name="type[]" value="group">
-                    <label for="group">Group activity</label><br><br>
-                    <label for="slider">Duration (in hours):</label>
+                    <label for="type">Type:</label><br>
+                    <select id="type" name="type">
+                      <option value="Just me, myself, & I">Just me, myself, & I</option>
+                      <option value="First date">First date</option>
+                      <option value="Date night with my significant other">Date night with my significant other</option>
+                      <option value="Group activity">Group activity</option>
+                    </select><br><br>
+                    
+                    <label for="duration_slider">Duration (in hours):</label>
                     <div class="slider-container">
-                        <input type="range" id="slider" name="slider" min="0" max="10" step="1" value="5" list="tickmarks">
+                        <input type="range" id="duration_slider" name="duration_slider" min="0" max="10" step="1" value="5" list="tickmarks">
                         <div class="number-label">
                             <!-- <span>0</span> -->
                             <span>1</span>
@@ -146,7 +165,7 @@
                             <!-- <span>10</span> -->
                         </div>
                     </div>
-                    <datalist id="tickmarks">
+                    <datalist id="duration" name="duration">
                         <!-- <option value="0" label="0"> -->
                         <option value="1" label="1">
                         <option value="2" label="2">
@@ -159,45 +178,53 @@
                         <option value="9" label="9">
                         <!-- <option value="10" label="10"> -->
                     </datalist><br><br>
-                    <label for="time">Time of Day (check all that apply. If time of day doesn't matter, check all the boxes):</label><br>
-                    <input type="checkbox" id="morning" name="time[]" value="morning">
-                    <label for="morning">Morning</label><br>
-                    <input type="checkbox" id="afternoon" name="time[]" value="afternoon">
-                    <label for="afternoon">Afternoon</label><br>
-                    <input type="checkbox" id="evening" name="time[]" value="evening">
-                    <label for="evening">Evening</label><br><br>
-                    <label for="season">Season (check all that apply. If the season doesn't matter, check all the boxes):</label><br>
-                    <input type="checkbox" id="spring" name="season[]" value="spring">
-                    <label for="spring">Spring</label><br>
-                    <input type="checkbox" id="summer" name="season[]" value="summer">
-                    <label for="summer">Summer</label><br>
-                    <input type="checkbox" id="fall" name="season[]" value="fall">
-                    <label for="fall">Fall</label><br>
-                    <input type="checkbox" id="winter" name="season[]" value="winter">
-                    <label for="winter">Winter</label><br><br>
-                    <label for="season">Activity location: (check all that apply. If the location doesn't matter, check all the boxes):</label><br>
-                    <input type="checkbox" id="indoors" name="location[]" value="indoors">
-                    <label for="indoors">Indoors</label><br>
-                    <input type="checkbox" id="outdoors" name="location[]" value="outdoors">
-                    <label for="outdoors">Outdoors</label><br><br>
-                    <input type="checkbox" id="food" name="food[]" value="food">
-                    <label for="food">Involves food?</label><br><br>
+
+                    <label for="time_of_day">Time of Day:</label><br>
+                        <select id="time_of_day" name="time_of_day">
+                        <option value="Morning">Morning</option>
+                        <option value="Afternoon">Afternoon</option>
+                        <option value="Evening">Evening</option>
+                        <option value="Doesn't Matter">Doesn't Matter</option>
+                        </select><br><br>
+
+                        <label for="season">Season:</label><br>
+                        <select id="season" name="season">
+                          <option value="Spring">Spring</option>
+                          <option value="Summer">Summer</option>
+                          <option value="Fall">Fall</option>
+                          <option value="Winter">Winter</option>
+                          <option value="Doesn't Matter">Doesn't Matter</option>
+                        </select><br><br>
+                        
+                        <label for="indoor_outdoor">Activity Location:</label><br>
+                        <select id="indoor_outdoor" name="indoor_outdoor">
+                          <option value="Indoors">Indoors</option>
+                          <option value="Outdoors">Outdoors</option>
+                          <option value="Doesn't Matter">Doesn't Matter</option>
+                        </select><br><br>
+
+                    <label>Involves food?</label><br>
+                    <input type="radio" id="foodYes" name="food" value="True">
+                    <label for="foodYes">Yes</label><br>
+                    <input type="radio" id="foodNo" name="food" value="False">
+                    <label for="foodNo">No</label>
+                    <br><br>
                     <!--functions for conditional prompts-->
                     <script>
                         function requiresEquipment() {
-                            var checkbox = document.getElementById("equipment");
+                            var radioYes = document.getElementById("equipmentYes");
                             var promptContainer = document.querySelector(".equipmentConditional-prompt");
-                            // Toggle the display property based on the checkbox state
-                            promptContainer.style.display = checkbox.checked ? "block" : "none";
+                    
+                            // Display the prompt only if the 'Yes' radio button is checked
+                            promptContainer.style.display = radioYes.checked ? "block" : "none";
                         }
-                        function specificCity() {
-                            var checkbox = document.getElementById("city");
-                            var promptContainer = document.querySelector(".cityConditional-prompt");
-                            // Toggle the display property based on the checkbox state
-                            promptContainer.style.display = checkbox.checked ? "block" : "none";
-                        }
+                    
+                        // Initial call to set the correct display state when the page loads
+                        window.onload = requiresEquipment;
                     </script>
+                    <button type="submit">Submit Activity Now.</button>
                 </form>
+                <br><br>
     </div>
     <!-- ======= Cta Section ======= -->
     <section id="cta" class="cta">
