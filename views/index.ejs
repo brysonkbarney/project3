@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <label><b>Activity Information:</b></label>
+  <br><br>
+  <table style="width: 100%; background-color: antiquewhite; border: 1px solid black;">
+    <thead style="background-color: cornflowerblue; color: white;">
+      <tr>
+        <th style="text-align: left;">ID</th>
+        <th style="text-align: left;">Activity</th>
+        <th style="text-align: left;">Price</th> <!-- corrected order -->
+        <th style="text-align: left;">Type</th>
+        <th style="text-align: left;">Description</th>
+        <th style="text-align: left;">Duration</th>
+        <th style="text-align: left;">Time of Day</th>
+        <th style="text-align: left;">Equipment (T or F)</th>
+        <th style="text-align: left;">Location</th>
+        <th style="text-align: left;">Season</th>
+        <th style="text-align: left;">Indoor or Outdoor?</th>
+        <th style="text-align: left;">Food</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody style="font-family: Arial; font-size: 9pt;">
+      <% for (let iCount=0; iCount < myactivity.length; iCount++) { %>
+        <tr>
+          <td>
+            <%= myactivity[iCount].id %>
+          </td>
+          <td>
+            <%= myactivity[iCount].activity %>
+          </td>
+          <td>
+            <%= myactivity[iCount].price %>
+          </td>
+          <td>
+            <%= myactivity[iCount].type %>
+          </td>
+          <td>
+            <%= myactivity[iCount].description %>
+          </td>
+          <td>
+            <%= myactivity[iCount].duration %>
+          </td>
+          <td>
+            <%= myactivity[iCount].time_of_day %>
+          </td>
+          <td style="text-align: center;">
+            <%= myactivity[iCount].equipment %>
+          </td>
+          <td>
+            <%= myactivity[iCount].location %>
+          </td>
+          <td>
+            <%= myactivity[iCount].season %>
+          </td>
+          <td>
+            <%= myactivity[iCount].indoor_outdoor %>
+          </td>
+          <td style="text-align: center;">
+            <%= myactivity[iCount].food %>
+          </td>
+          <td style="text-align: center;">
+            <form action="/editActivity/<%= myactivity[iCount].id %>" method="GET">
+              <button type="submit">Edit</button>
+            </form>
+          </td>
+          <td style="text-align: center;">
+            <form action="/deleteActivity/<%= myactivity[iCount].id %>" method="POST">
+              <button type="submit">Delete</button>
+            </form>
+          </td>
+        </tr>
+        <% } %>
+    </tbody>
+  </table>
+  <br><br>
+  <form action="/addActivity" method="GET">
+    <button type="submit">Add Activity</button>
+  </form>
+</body>
+
+</html>
