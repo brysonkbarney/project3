@@ -53,6 +53,49 @@ app.get("/add", (req, res) => {
   }
 });
 
+// Handling POST request for storing activity data
+app.post("/storeData", (req, res) => {
+  // Extract data from the request body
+  const { 
+      activity, 
+      description, 
+      equipment, 
+      equipment_description, 
+      price, 
+      location, 
+      type, 
+      duration_slider, 
+      time_of_day, 
+      season, 
+      indoor_outdoor, 
+      food 
+  } = req.body;
+
+  // Insert data into the 'activity' table
+  knex('activity')
+      .insert({
+          activity: activity,
+          description: description,
+          equipment: equipment === 'True',  // Convert to boolean
+          equipment_description: equipment === 'True' ? equipment_description : null,
+          price: price,
+          location: location,
+          type: type,
+          duration: duration_slider,
+          time_of_day: time_of_day,
+          season: season,
+          indoor_outdoor: indoor_outdoor,
+          food: food === 'True'  // Convert to boolean
+      })
+      .then(() => {
+          res.send(`<script>alert("Activity added successfully."); window.location.href = "/"; </script>`);
+      })
+      .catch((err) => {
+          console.error(err);
+          res.send(`<script>alert("Error adding activity to the database."); window.location.href = "/add"; </script>`);
+      });
+});
+
 
 app.get("/filter", (req, res) => {
   knex

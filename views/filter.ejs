@@ -33,6 +33,44 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+  <style>
+    .filter-bar {
+        padding: 20px;
+        background-color: #f7f7f7;
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        align-items: center;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .filter-bar select,
+    .filter-bar input {
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 14px;
+    }
+
+    .filter-bar label {
+        font-weight: bold;
+        margin-right: 5px;
+    }
+
+    .filter-bar button {
+        padding: 10px 20px;
+        background-color: #ff385c;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .filter-bar button:hover {
+        opacity: 0.9;
+    }
+</style>
 </head>
 
 <body>
@@ -89,6 +127,122 @@
         </div>
     </section>
     <br>
+
+    <div class="filter-bar">
+        <div class="filter-item">
+            <label for="filter-type">Type:</label>
+            <select id="filter-type">
+                <option value="">Any</option>
+                <option value="Just me, myself, & I">Just me, myself, & I</option>
+                <option value="First date">First date</option>
+                <option value="Date night with my significant other">Date night with my significant other</option>
+                <option value="Group Activity">Group Activity</option>
+                <!-- Add more options based on your database contents -->
+            </select>
+        </div>
+
+        <div class="filter-item">
+            <label for="filter-location">City Location:</label>
+            <select id="filter-location">
+                <option value="">Any</option>
+                <option value="Provo">Provo</option>
+                <option value="Orem">Orem</option>
+                <option value="Lehi">Lehi</option>
+                <option value="American Fork">American Fork</option>
+                <option value="Salt Lake City">Salt Lake City</option>
+                <option value="Midway">Midway</option>
+                <option value="Park City">Park City</option>
+                <!-- Add more options based on your database contents -->
+            </select>
+        </div>
+
+        <div class="filter-item">
+            <label for="filter-price">Price:</label>
+            <select id="filter-price">
+                <option value="">Any</option>
+                <option value="free">Free</option>
+                <option value="$0-$15">$0-$15</option>
+                <option value="$15-$30">$15-$30</option>
+                <option value="$30-50">$30-50</option>
+                <option value="$50+">$50+</option>
+                <!-- Add more options based on your database contents -->
+            </select>
+        </div>
+
+        <div class="filter-item">
+            <label for="filter-duration">Duration:</label>
+            <select id="filter-duration">
+                <option value="">Any</option>
+                <option value="1" label="1">
+                <option value="2" label="2">
+                <option value="3" label="3">
+                <option value="4" label="4">
+                <option value="5" label="5">
+                <option value="6" label="6">
+                <option value="7" label="7">
+                <option value="8" label="8">
+                <option value="9" label="9">
+                <!-- Add more options based on your database contents -->
+            </select>
+        </div>
+
+        <div class="filter-item">
+            <label for="filter-time_of_day">Time of Day:</label>
+            <select id="filter-time_of_day">
+                <option value="">Any</option>
+                <option value="Morning">Morning</option>
+                <option value="Afternoon">Afternoon</option>
+                <option value="Evening">Evening</option>
+                <!-- Add more options based on your database contents -->
+            </select>
+        </div>
+
+        <div class="filter-item">
+            <label for="filter-season">Season:</label>
+            <select id="filter-season">
+                <option value="">Any</option>
+                <option value="Spring">Spring</option>
+                <option value="Summer">Summer</option>
+                <option value="Fall">Fall</option>
+                <option value="Winter">Winter</option>
+                <!-- Add more options based on your database contents -->
+            </select>
+        </div>
+
+        <div class="filter-item">
+            <label for="filter-indoor_outdoor">Indoor or Outdoor:</label>
+            <select id="filter-indoor_outdoor">
+                <option value="">Any</option>
+                <option value="Indoors">Indoors</option>
+                <option value="Outdoors">Outdoors</option>
+                <!-- Add more options based on your database contents -->
+            </select>
+        </div>
+
+        <div class="filter-item">
+            <label for="filter-equipment">Equipment:</label>
+            <select id="filter-equipment">
+                <option value="">Any</option>
+                <option value="Indoors">Yes</option>
+                <option value="Outdoors">No</option>
+                <!-- Add more options based on your database contents -->
+            </select>
+        </div>
+
+        <div class="filter-item">
+            <label for="filter-food">Food:</label>
+            <select id="filter-food">
+                <option value="">Any</option>
+                <option value="Indoors">Yes</option>
+                <option value="Outdoors">No</option>
+                <!-- Add more options based on your database contents -->
+            </select>
+        </div>
+    </div>
+    <br>
+
+
+
     <div>
         <label><b>Activity Information:</b></label>
         <br><br>
