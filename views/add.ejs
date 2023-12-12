@@ -84,7 +84,7 @@
         <section class="inner-page">
             <div class="container">
               <p>
-                <form action="/storeData" method="post">
+                <form action="/storeData" method="post" enctype="multipart/form-data">
                   
                     <label for="activity">Activity:</label>
                     <input type="activity" id="activity" name="activity" required><br><br>
@@ -208,6 +208,9 @@
                     <label for="foodYes">Yes</label><br>
                     <input type="radio" id="foodNo" name="food" value="False">
                     <label for="foodNo">No</label>
+                    <br><br>
+                    <label for="activityImage">Upload Image:</label>
+                    <input type="file" id="activityImage" name="activityImage" accept="image/*" required><br><br>
                     <br><br>
                     <!--functions for conditional prompts-->
                     <script>

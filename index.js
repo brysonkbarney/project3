@@ -11,6 +11,23 @@ app.set("view engine", "ejs"); //using ejs for our files.
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+// Require multer
+const multer = require('multer');
+
+// Configure storage
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'public/uploads/') // Make sure this path exists and is writable
+  },
+  filename: function (req, file, cb) {
+    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
+    cb(null, file.fieldname + '-' + uniqueSuffix + path.extname(file.originalname))
+  }
+})
+
+const upload = multer({ storage: storage })
+
+
 // Setting up express-session middleware
 const session = require("express-session");
 app.use(
@@ -28,10 +45,10 @@ app.use(express.static("public"));
 const knex = require("knex")({
   client: "pg",
   connection: {
-    host: process.env.RDS_HOSTNAME,
-    user: process.env.RDS_USERNAME,
-    password: process.env.RDS_PASSWORD,
-    database: process.env.RDS_DB_NAME,
+    host: process.env.RDS_HOSTNAME || "localhost",
+    user: process.env.RDS_USERNAME || "carolinetobler",
+    password: process.env.RDS_PASSWORD || "P0ftim1225-",
+    database: process.env.RDS_DB_NAME || "project3",
     port: process.env.RDS_PORT || 5432,
     ssl: process.env.DB ? { rejectUnauthorized: false } : false,
   }, //a dictionary (keys and values)
@@ -54,7 +71,8 @@ app.get("/add", (req, res) => {
 });
 
 // Handling POST request for storing activity data
-app.post("/storeData", (req, res) => {
+// Route to handle activity data and image upload
+app.post("/storeData", upload.single('activityImage'), (req, res) => {
   // Extract data from the request body
   const { 
       activity, 
@@ -71,7 +89,7 @@ app.post("/storeData", (req, res) => {
       food 
   } = req.body;
 
-  // Insert data into the 'activity' table
+  // Insert data into the 'activity' table including the image path
   knex('activity')
       .insert({
           activity: activity,
@@ -85,26 +103,89 @@ app.post("/storeData", (req, res) => {
           time_of_day: time_of_day,
           season: season,
           indoor_outdoor: indoor_outdoor,
-          food: food === 'True'  // Convert to boolean
+          food: food === 'True',  // Convert to boolean
+          image: req.file ? req.file.path : null // Save the image path if file was uploaded
       })
       .then(() => {
           res.send(`<script>alert("Activity added successfully."); window.location.href = "/"; </script>`);
       })
       .catch((err) => {
           console.error(err);
-          res.send(`<script>alert("Error adding activity to the database."); window.location.href = "/add"; </script>`);
+          res.status(500).send(`<script>alert("Error adding activity to the database."); window.location.href = "/add"; </script>`);
       });
 });
 
 
+//app.get("/filter", (req, res) => {
+  //knex
+    //.select()
+    //.from("activity")
+    //.then((activity) => {
+      //res.render("filter", { myactivity: activity });
+    //});
+//});
+
 app.get("/filter", (req, res) => {
-  knex
-    .select()
-    .from("activity")
-    .then((activity) => {
-      res.render("filter", { myactivity: activity });
+  let query = knex.select('*').from('activity');
+
+  // Add conditions for each filter if they are provided in the query parameters
+  if (req.query.type && req.query.type !== '') {
+      query = query.where('type', req.query.type);
+  }
+  if (req.query.location && req.query.location !== '' && req.query.location !== "Doesn't Matter") {
+      query = query.where('location', req.query.location);
+  }
+  if (req.query.price && req.query.price !== '') {
+      query = query.where('price', req.query.price);
+  }
+  if (req.query.duration && req.query.duration !== '') {
+      query = query.where('duration', req.query.duration);
+  }
+  if (req.query.time_of_day && req.query.time_of_day !== '' && req.query.time_of_day !== "Doesn't Matter") {
+      query = query.where('time_of_day', req.query.time_of_day);
+  }
+  if (req.query.season && req.query.season !== '') {
+      query = query.where('season', req.query.season);
+  }
+  if (req.query.indoor_outdoor && req.query.indoor_outdoor !== '') {
+      query = query.where('indoor_outdoor', req.query.indoor_outdoor);
+  }
+  if (req.query.equipment && req.query.equipment !== '') {
+      query = query.where('equipment', req.query.equipment === 'Yes');
+  }
+  if (req.query.food && req.query.food !== '') {
+      query = query.where('food', req.query.food === 'Yes');
+  }
+
+  // Execute the query and render the page with the filtered results
+  query
+      .then((activities) => {
+          res.render("filter", { myactivity: activities });
+      })
+      .catch((err) => {
+          console.error('Error fetching activities:', err);
+          res.status(500).send('Error fetching activities');
+      });
+});
+
+app.get("/activity/:id", (req, res) => {
+  const activityId = req.params.id;
+
+  knex.select('*').from('activity').where('id', activityId)
+    .then(activityDetails => {
+      if (activityDetails.length > 0) {
+        res.render("activityDetail", { activity: activityDetails[0] });
+      } else {
+        res.status(404).send("Activity not found");
+      }
+    })
+    .catch(err => {
+      console.error('Error fetching activity details:', err);
+      res.status(500).send('Error fetching activity details');
     });
 });
+
+
 
 // Handling POST request for adding users to the data table
 app.post("/storeLogin", (req, res) => {
