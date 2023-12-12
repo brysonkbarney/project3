@@ -60,7 +60,7 @@
 
     .filter-bar button {
         padding: 10px 20px;
-        background-color: #ff385c;
+        background-color: #ffc107;;
         color: white;
         border: none;
         border-radius: 4px;
@@ -70,6 +70,59 @@
     .filter-bar button:hover {
         opacity: 0.9;
     }
+
+    .filter-popup {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border: 1px solid #ddd;
+        padding: 20px;
+        background-color: white;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        z-index: 2;
+        width: auto; /* or a specific width like 400px */
+        max-width: 90%; /* To ensure it doesn't get too wide on larger screens */
+        box-sizing: border-box;
+    }
+    
+    
+    /* Overlay */
+    .overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.5);
+        z-index: 1;
+    }
+
+    .card-link {
+        text-decoration: none; /* Removes underline from links */
+        color: inherit; /* Inherits text color from parent */
+      }
+      
+      .card-link:hover .card {
+        /* Optional: add hover effects */
+        transform: translateY(-5px);
+        box-shadow: 0px 12px 20px rgba(0,0,0,0.2);
+      }
+
+    .close-button {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        border: none;
+        background: none;
+        font-size: 24px;
+        cursor: pointer;
+    }
+    
+      
+    
 </style>
 </head>
 
@@ -116,222 +169,171 @@
           <h2 id="about">Find the Perfect Activity for You.</h2>
           <!--<p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>-->
         </div>
-    <!-- ======= Cta Section ======= -->
-    <section id="cta" class="cta">
-        <div class="container">
-          <div class="text-center">
-            <h3>Explore Activities Now.</h3>
-            <p></p>
-            <a class="cta-btn" href=''>Search</a>
-          </div>
-        </div>
     </section>
-    <br>
 
-    <div class="filter-bar">
-        <div class="filter-item">
-            <label for="filter-type">Type:</label>
-            <select id="filter-type">
-                <option value="">Any</option>
-                <option value="Just me, myself, & I">Just me, myself, & I</option>
-                <option value="First date">First date</option>
-                <option value="Date night with my significant other">Date night with my significant other</option>
-                <option value="Group Activity">Group Activity</option>
-                <!-- Add more options based on your database contents -->
-            </select>
-        </div>
+    <div id="filterPopup" class="filter-popup">
+        <button id="closeFilterPopup" class="close-button">&times;</button>
+        <form action="/filter" method="GET" class="filter-bar">
+            <div class="filter-bar">
+                <div class="filter-item">
+                    <label for="filter-type">Type:</label>
+                    <select id="filter-type" name="type">
+                        <option value="">Any</option>
+                        <option value="Just me, myself, & I">Just me, myself, & I</option>
+                        <option value="First date">First date</option>
+                        <option value="Date night with my significant other">Date night with my significant other</option>
+                        <option value="Group Activity">Group Activity</option>
+                        <!-- Add more options based on your database contents -->
+                    </select>
+                </div>
 
-        <div class="filter-item">
-            <label for="filter-location">City Location:</label>
-            <select id="filter-location">
-                <option value="">Any</option>
-                <option value="Provo">Provo</option>
-                <option value="Orem">Orem</option>
-                <option value="Lehi">Lehi</option>
-                <option value="American Fork">American Fork</option>
-                <option value="Salt Lake City">Salt Lake City</option>
-                <option value="Midway">Midway</option>
-                <option value="Park City">Park City</option>
-                <!-- Add more options based on your database contents -->
-            </select>
-        </div>
+                <div class="filter-item">
+                    <label for="filter-location">City Location:</label>
+                    <select id="filter-location"  name="location">
+                        <option value="Doesn't Matter">Doesn't Matter</option>
+                        <option value="Provo">Provo</option>
+                        <option value="Orem">Orem</option>
+                        <option value="Lehi">Lehi</option>
+                        <option value="American Fork">American Fork</option>
+                        <option value="Salt Lake City">Salt Lake City</option>
+                        <option value="Midway">Midway</option>
+                        <option value="Park City">Park City</option>
+                        <!-- Add more options based on your database contents -->
+                    </select>
+                </div>
 
-        <div class="filter-item">
-            <label for="filter-price">Price:</label>
-            <select id="filter-price">
-                <option value="">Any</option>
-                <option value="free">Free</option>
-                <option value="$0-$15">$0-$15</option>
-                <option value="$15-$30">$15-$30</option>
-                <option value="$30-50">$30-50</option>
-                <option value="$50+">$50+</option>
-                <!-- Add more options based on your database contents -->
-            </select>
-        </div>
+                <div class="filter-item">
+                    <label for="filter-price">Price:</label>
+                    <select id="filter-price" name="price">
+                        <option value="">Any</option>
+                        <option value="free">Free</option>
+                        <option value="$0-$15">$0-$15</option>
+                        <option value="$15-$30">$15-$30</option>
+                        <option value="$30-50">$30-50</option>
+                        <option value="$50+">$50+</option>
+                        <!-- Add more options based on your database contents -->
+                    </select>
+                </div>
 
-        <div class="filter-item">
-            <label for="filter-duration">Duration:</label>
-            <select id="filter-duration">
-                <option value="">Any</option>
-                <option value="1" label="1">
-                <option value="2" label="2">
-                <option value="3" label="3">
-                <option value="4" label="4">
-                <option value="5" label="5">
-                <option value="6" label="6">
-                <option value="7" label="7">
-                <option value="8" label="8">
-                <option value="9" label="9">
-                <!-- Add more options based on your database contents -->
-            </select>
-        </div>
+                <div class="filter-item">
+                    <label for="filter-duration">Duration:</label>
+                    <select id="filter-duration" name="duration">
+                        <option value="">Any</option>
+                        <option value="1" label="1">
+                        <option value="2" label="2">
+                        <option value="3" label="3">
+                        <option value="4" label="4">
+                        <option value="5" label="5">
+                        <option value="6" label="6">
+                        <option value="7" label="7">
+                        <option value="8" label="8">
+                        <option value="9" label="9">
+                        <!-- Add more options based on your database contents -->
+                    </select>
+                </div>
 
-        <div class="filter-item">
-            <label for="filter-time_of_day">Time of Day:</label>
-            <select id="filter-time_of_day">
-                <option value="">Any</option>
-                <option value="Morning">Morning</option>
-                <option value="Afternoon">Afternoon</option>
-                <option value="Evening">Evening</option>
-                <!-- Add more options based on your database contents -->
-            </select>
-        </div>
+                <div class="filter-item">
+                    <label for="filter-time_of_day">Time of Day:</label>
+                    <select id="filter-time_of_day" name="time_of_day">
+                        <option value="Doesn't Matter">Doesn't Matter</option>
+                        <option value="Morning">Morning</option>
+                        <option value="Afternoon">Afternoon</option>
+                        <option value="Evening">Evening</option>
+                        <!-- Add more options based on your database contents -->
+                    </select>
+                </div>
 
-        <div class="filter-item">
-            <label for="filter-season">Season:</label>
-            <select id="filter-season">
-                <option value="">Any</option>
-                <option value="Spring">Spring</option>
-                <option value="Summer">Summer</option>
-                <option value="Fall">Fall</option>
-                <option value="Winter">Winter</option>
-                <!-- Add more options based on your database contents -->
-            </select>
-        </div>
+                <div class="filter-item">
+                    <label for="filter-season">Season:</label>
+                    <select id="filter-season" name="season">
+                        <option value="">Any</option>
+                        <option value="Spring">Spring</option>
+                        <option value="Summer">Summer</option>
+                        <option value="Fall">Fall</option>
+                        <option value="Winter">Winter</option>
+                        <!-- Add more options based on your database contents -->
+                    </select>
+                </div>
 
-        <div class="filter-item">
-            <label for="filter-indoor_outdoor">Indoor or Outdoor:</label>
-            <select id="filter-indoor_outdoor">
-                <option value="">Any</option>
-                <option value="Indoors">Indoors</option>
-                <option value="Outdoors">Outdoors</option>
-                <!-- Add more options based on your database contents -->
-            </select>
-        </div>
+                <div class="filter-item">
+                    <label for="filter-indoor_outdoor">Indoor or Outdoor:</label>
+                    <select id="filter-indoor_outdoor" name="indoor_outdoor">
+                        <option value="">Any</option>
+                        <option value="Indoors">Indoors</option>
+                        <option value="Outdoors">Outdoors</option>
+                        <!-- Add more options based on your database contents -->
+                    </select>
+                </div>
 
-        <div class="filter-item">
-            <label for="filter-equipment">Equipment:</label>
-            <select id="filter-equipment">
-                <option value="">Any</option>
-                <option value="Indoors">Yes</option>
-                <option value="Outdoors">No</option>
-                <!-- Add more options based on your database contents -->
-            </select>
-        </div>
+                <div class="filter-item">
+                    <label for="filter-equipment">Equipment:</label>
+                    <select id="filter-equipment" name="equipment">
+                        <option value="">Any</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                        <!-- Add more options based on your database contents -->
+                    </select>
+                </div>
 
-        <div class="filter-item">
-            <label for="filter-food">Food:</label>
-            <select id="filter-food">
-                <option value="">Any</option>
-                <option value="Indoors">Yes</option>
-                <option value="Outdoors">No</option>
-                <!-- Add more options based on your database contents -->
-            </select>
-        </div>
-    </div>
-    <br>
-
-
-
-    <div>
-        <label><b>Activity Information:</b></label>
-        <br><br>
-        <table style="width: 100%; background-color: antiquewhite; border: 1px solid black;">
-          <thead style="background-color: cornflowerblue; color: white;">
-            <tr>
-              <th style="text-align: left;">ID</th>
-              <th style="text-align: left;">Activity</th>
-              <th style="text-align: left;">Price</th> <!-- corrected order -->
-              <th style="text-align: left;">Type</th>
-              <th style="text-align: left;">Description</th>
-              <th style="text-align: left;">Duration</th>
-              <th style="text-align: left;">Time of Day</th>
-              <th style="text-align: left;">Equipment (T or F)</th>
-              <th style="text-align: left;">Location</th>
-              <th style="text-align: left;">Season</th>
-              <th style="text-align: left;">Indoor or Outdoor?</th>
-              <th style="text-align: left;">Food</th>
-              <th></th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody style="font-family: Arial; font-size: 9pt;">
-            <% for (let iCount=0; iCount < myactivity.length; iCount++) { %>
-              <tr>
-                <td>
-                  <%= myactivity[iCount].id %>
-                </td>
-                <td>
-                  <%= myactivity[iCount].activity %>
-                </td>
-                <td>
-                  <%= myactivity[iCount].price %>
-                </td>
-                <td>
-                  <%= myactivity[iCount].type %>
-                </td>
-                <td>
-                  <%= myactivity[iCount].description %>
-                </td>
-                <td>
-                  <%= myactivity[iCount].duration %>
-                </td>
-                <td>
-                  <%= myactivity[iCount].time_of_day %>
-                </td>
-                <td style="text-align: center;">
-                  <%= myactivity[iCount].equipment %>
-                </td>
-                <td>
-                  <%= myactivity[iCount].location %>
-                </td>
-                <td>
-                  <%= myactivity[iCount].season %>
-                </td>
-                <td>
-                  <%= myactivity[iCount].indoor_outdoor %>
-                </td>
-                <td style="text-align: center;">
-                  <%= myactivity[iCount].food %>
-                </td>
-                <td style="text-align: center;">
-                  <form action="/editActivity/<%= myactivity[iCount].id %>" method="GET">
-                    <button type="submit">Edit</button>
-                  </form>
-                </td>
-                <td style="text-align: center;">
-                  <form action="/deleteActivity/<%= myactivity[iCount].id %>" method="POST">
-                    <button type="submit">Delete</button>
-                  </form>
-                </td>
-              </tr>
-              <% } %>
-          </tbody>
-        </table>
-        <br><br>
-        <form action="/addActivity" method="GET">
-          <button type="submit">Add Activity</button>
+                <div class="filter-item">
+                    <label for="filter-food">Food:</label>
+                    <select id="filter-food" name="food">
+                        <option value="">Any</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                        <!-- Add more options based on your database contents -->
+                    </select>
+                </div>
+                <div class="filter-buttons">
+                    <button type="submit">Search</button>
+                </div>
+            </div>
         </form>
-      </section><!-- End Cta Section -->
     </div>
-      <div class="social-links text-center text-md-right pt-3 pt-md-0">
-        <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-        <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-        <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-        <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-        <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-      </div>
+    <br>
+    
+        <div class="filter-buttons">
+            <a href="#" id="filterButton" class="btn btn-primary">Filter</a>
+            <a href="/filter" class="btn btn-secondary">Reset</a>
+        </div>
+    
+
+    <!-- Add container for the cards -->
+<div class="container mt-4">
+    <div class="row">
+        <% for (let i = 0; i < myactivity.length; i++) { %>
+          <% const activity = myactivity[i]; %>
+          <!-- Each card is in a column that spans 3 out of 12 columns -->
+          <div class="col-md-3 mb-4">
+              <a href="/activity/<%= activity.id %>" class="card-link">
+                <div class="card h-100">
+                    <% if (activity.image) { %>
+                        <img src="/<%= activity.image.substring(activity.image.indexOf('/') + 1) %>" alt="Activity Image" class="card-img-top">
+                    <% } else { %>
+                        <!-- Placeholder image or leave empty -->
+                        <img src="/path/to/placeholder-image.jpg" alt="No image available" class="card-img-top">
+                    <% } %>
+                    <div class="card-body">
+                        <h5 class="card-title"><%= activity.activity %></h5>
+                        <p class="card-text"><%= activity.description %></p>
+                        <p class="card-text"><%= activity.location %> - <%= activity.price %></p>
+                    </div>
+                </div>
+              </a>
+          </div>
+        <% } %>
     </div>
+</div>
+  
+<div class="social-links text-center text-md-right pt-3 pt-md-0">
+  <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+  <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+  <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+  <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+  <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+</div>
+</div>
+
   </footer><!-- End Footer -->
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
@@ -346,6 +348,25 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+
+  <script>
+    document.getElementById("filterButton").addEventListener("click", function() {
+        document.getElementById("filterPopup").style.display = "block";
+        var overlay = document.createElement("div");
+        overlay.className = "overlay";
+        document.body.appendChild(overlay);
+        overlay.addEventListener("click", closePopup);
+    });
+
+    document.getElementById("closeFilterPopup").addEventListener("click", closePopup);
+
+    function closePopup() {
+        document.getElementById("filterPopup").style.display = "none";
+        var overlay = document.querySelector(".overlay");
+        if (overlay) document.body.removeChild(overlay);
+    }
+</script>
+
 
 </body>
 
