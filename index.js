@@ -168,24 +168,25 @@ app.get("/filter", (req, res) => {
       });
 });
 
-app.get("/activity/:id", (req, res) => {
+app.get('/activity/:id', (req, res) => {
   const activityId = req.params.id;
 
+  // Fetch the specific record from the database using the activityId
   knex.select('*').from('activity').where('id', activityId)
-    .then(activityDetails => {
-      if (activityDetails.length > 0) {
-        res.render("activityDetail", { activity: activityDetails[0] });
-      } else {
-        res.status(404).send("Activity not found");
-      }
-    })
-    .catch(err => {
-      console.error('Error fetching activity details:', err);
-      res.status(500).send('Error fetching activity details');
-    });
+      .then(activityDetails => {
+          if (activityDetails.length > 0) {
+              // Now recordData is initialized and can be used
+              const recordData = activityDetails[0];
+              res.render("activityDetail", { record: recordData });
+          } else {
+              res.status(404).send("Activity not found");
+          }
+      })
+      .catch(err => {
+          console.error('Error fetching activity details:', err);
+          res.status(500).send('Error fetching activity details');
+      });
 });
-
-
 
 // Handling POST request for adding users to the data table
 app.post("/storeLogin", (req, res) => {
