@@ -213,6 +213,47 @@ app.post("/storeLogin", (req, res) => {
     });
 })
 
+app.get("/editLogin", (req, res) => {
+  console.log("------Testing------");
+
+  // Ensure req.session.userInfo is defined
+  if (!req.session.userInfo) {
+    // Redirect to the login page if userinfo is not defined
+    res.redirect("/account");
+    return;
+  }
+
+  console.log(req.session.userInfo.username);
+  console.log(req.session.userInfo.password);
+  // Render the editLogin page and pass userinfo to the template
+  res.render("editLogin", { userinfo: req.session.userInfo });
+});
+
+// Handling POST request for editing login information
+app.post("/editLogin", (req, res) => {
+  const { username, password } = req.body;
+
+  // Updating login information in the login table
+  knex("login")
+    .where("username", req.session.userInfo.username)
+    .update({
+      username: username,
+      password: password,
+    })
+    .then(() => {
+      // Update the session with the new username if it was changed
+      if (username !== req.session.userInfo.username) {
+        req.session.userInfo.username = username;
+      }
+
+      res.redirect("/");
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).json({ error: "Internal Server Error" });
+    });
+});
+
 // Handling GET request for the create account page
 app.get("/create", (req, res) => {
   res.render("create"); // Render the create.ejs file
@@ -274,7 +315,7 @@ app.get("/editLogin", (req, res) => {
   // Ensure req.session.userInfo is defined
   if (!req.session.userInfo) {
     // Redirect to the login page if userinfo is not defined
-    res.redirect("/login");
+    res.redirect("/account");
     return;
   }
 
