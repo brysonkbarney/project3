@@ -200,7 +200,9 @@ app.post("/storeLogin", (req, res) => {
       password: password,
     })
     .then(() => {
-      res.redirect("/");
+      res.send(
+        '<script>alert("Account Created Sucsessfully."); window.location.href = "/"; </script>'
+      );
     })
     .catch((err) => {
       console.error(err);

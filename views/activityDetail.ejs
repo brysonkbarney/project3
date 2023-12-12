@@ -5,85 +5,148 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Portfolio Details - Baker Bootstrap Template</title>
+  <title>Cougar Connect</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
-  <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-
-  <!-- Template Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet">
-
-  <!-- =======================================================
-  * Template Name: Baker
-  * Updated: Sep 18 2023 with Bootstrap v5.3.2
-  * Template URL: https://bootstrapmade.com/baker-free-onepage-bootstrap-theme/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+  <style>
+    body {
+        font-family: 'Open Sans', sans-serif;
+        background: #f8f9fa;
+        color: #333;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+      }
+      
+      .container {
+        max-width: 1200px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        background: #fff;
+        margin: 20px;
+        display: flex;
+        border-radius: 8px;
+        overflow: hidden;
+      }
+      
+      .image-section, .details-section {
+        flex: 1;
+      }
+      
+      .image-section {
+        flex: 1 1 50%; /* Adjust the ratio if needed */
+      }
+      
+      .image-section img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* This ensures the image covers the entire div */
+      }
+      
+      .details-section {
+        flex: 1 1 50%;
+        padding: 40px;
+        text-align: left; /* Align text to left */
+      }
+    .details-section {
+      padding: 40px;
+    }
+    .details-section h3 {
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+    .details-section ul {
+      list-style: none;
+      padding: 0;
+      font-size: 20px;
+    }
+    .details-section ul li {
+      margin-bottom: 10px;
+    }
+    .details-section ul li strong {
+      font-weight: bold;
+    }
+    .details-section h2 {
+      font-size: 26px;
+      margin-top: 30px;
+      margin-bottom: 15px;
+    }
+    .details-section p {
+      font-size: 18px;
+      line-height: 1.6;
+    }
+    .back-to-top {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      background: #ffc107;
+      color: #fff;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      font-size: 24px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .back-to-main {
+        position: fixed;
+        left: 20px;
+        bottom: 20px;
+        background: #007bff;
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 8px;
+        font-size: 18px;
+        text-decoration: none;
+        transition: background-color 0.3s;
+      }
+      .back-to-main:hover {
+        background-color: #0056b3;
+      }
+  </style>
 </head>
+
 <body>
     <main id="main">
-        <section id="portfolio-details" class="portfolio-details">
+        <section class="portfolio-details">
             <div class="container">
-                <div class="row gy-4">
-                    <div class="col-lg-8">
-                        <div class="portfolio-details-slider swiper">
-                            <div class="swiper-wrapper align-items-center">
-                                <!-- Display the image dynamically -->
-                                <div class="swiper-slide">
-                                    <img src="<%= record.image.replace('public/', '/') %>" alt="<%= record.activity %>">
-                                </div>
-                            </div>
-                            <div class="swiper-pagination"></div>
-                        </div>
-                    </div>
+                <div class="image-section">
+                    <!-- Display the image dynamically -->
+                    <img src="<%= record.image.replace('public/', '/') %>" alt="<%= record.activity %>">
+                </div>
 
-                    <div class="col-lg-4">
-                        <div class="portfolio-info">
-                            <h3>Activity information</h3>
-                            <ul>
-                                <li><strong>Activity</strong>: <%= record.activity %></li>
-                                <li><strong>Location</strong>: <%= record.location %></li>
-                                <li><strong>Price</strong>: <%= record.price %></li>
-                                <!-- Add more details as needed -->
-                            </ul>
-                        </div>
-                        <div class="portfolio-description">
-                            <h2>About this activity</h2>
-                            <p><%= record.description %></p>
-                        </div>
-                    </div>
+                <div class="details-section">
+                    <h3>Activity information</h3>
+                    <ul>
+                        <li><strong>Activity:</strong> <%= record.activity %></li>
+                        <li><strong>Location:</strong> <%= record.location %></li>
+                        <li><strong>Price:</strong> <%= record.price %></li>
+                        <li><strong>Activity:</strong> <%= record.duration %></li>
+                        <li><strong>Location:</strong> <%= record.time_of_day %></li>
+                        <li><strong>Price:</strong> <%= record.season %></li>
+                        <li><strong>Price:</strong> <%= record.indoor_outdoor %></li>
+                        <!-- Add more details as needed -->
+                        <% if (record.food) { %>
+                            <li><strong>Food:</strong>True</li>
+                        <% } %>
+                
+                        <% if (record.equipment) { %>
+                            <li><strong>Equipment:</strong> <%= record.equipment_description %></li>
+                        <% } %>
+                    </ul>
+                    <h2>About this activity</h2>
+                    <p><%= record.description %></p>
                 </div>
             </div>
         </section>
     </main>
-
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-
-  <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>
-
+    <a href="/filter" class="back-to-main">Back to Main</a>
 </body>
 
 </html>
