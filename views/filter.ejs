@@ -301,37 +301,45 @@
                 <!--<p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>-->
             </div>
             <div class="row">
-                <% for (let i=0; i < myactivity.length; i++) { %>
-                    <% const activity=myactivity[i]; %>
-                        <!-- Each card is in a column that spans 3 out of 12 columns -->
-                        <div class="col-md-3 mb-4">
-                            <a href="/activity/<%= activity.id %>" class="card-link">
-                                <div class="card h-100">
-                                    <% if (activity.image) { %>
-                                        <img src="/<%= activity.image.substring(activity.image.indexOf('/') + 1) %>"
-                                            alt="Activity Image" class="card-img-top">
-                                        <% } else { %>
-                                            <!-- Placeholder image or leave empty -->
-                                            <img src="/path/to/placeholder-image.jpg" alt="No image available"
-                                                class="card-img-top">
-                                            <% } %>
-                                                <div class="card-body">
-                                                    <h5 class="card-title">
-                                                        <%= activity.activity %>
-                                                    </h5>
-                                                    <p class="card-text">
-                                                        <%= activity.description %>
-                                                    </p>
-                                                    <p class="card-text">
-                                                        <%= activity.location %> - <%= activity.price %>
-                                                    </p>
-                                                </div>
+                <% if (myactivity.length===0) { %>
+                    <div class="col-12">
+                        <br><br>
+                        <h1 class="text-center">Sorry, no results.</h1>
+                    </div>
+                    <% } else { %>
+                        <% for (let i=0; i < myactivity.length; i++) { %>
+                            <% const activity=myactivity[i]; %>
+                                <!-- Each card is in a column that spans 3 out of 12 columns -->
+                                <div class="col-md-3 mb-4">
+                                    <a href="/activity/<%= activity.id %>" class="card-link">
+                                        <div class="card h-100">
+                                            <% if (activity.image) { %>
+                                                <img src="/<%= activity.image.substring(activity.image.indexOf('/') + 1) %>"
+                                                    alt="Activity Image" class="card-img-top">
+                                                <% } else { %>
+                                                    <!-- Placeholder image or leave empty -->
+                                                    <img src="/path/to/placeholder-image.jpg" alt="No image available"
+                                                        class="card-img-top">
+                                                    <% } %>
+                                                        <div class="card-body">
+                                                            <h5 class="card-title">
+                                                                <%= activity.activity %>
+                                                            </h5>
+                                                            <p class="card-text">
+                                                                <%= activity.description %>
+                                                            </p>
+                                                            <p class="card-text">
+                                                                <%= activity.location %> - <%= activity.price %>
+                                                            </p>
+                                                        </div>
+                                        </div>
+                                    </a>
                                 </div>
-                            </a>
-                        </div>
-                        <% } %>
+                                <% } %>
+                                    <% } %>
             </div>
         </div>
+
         </div>
 
         </footer><!-- End Footer -->
