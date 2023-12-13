@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Cougar Connect</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <style>
+    body {
+        font-family: 'Open Sans', sans-serif;
+        background: #f8f9fa;
+        color: #333;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+      }
+      
+      .container {
+        max-width: 1200px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        background: #fff;
+        margin: 20px;
+        display: flex;
+        border-radius: 8px;
+        overflow: hidden;
+      }
+      
+      .image-section, .details-section {
+        flex: 1;
+      }
+      
+      .image-section {
+        flex: 1 1 50%; /* Adjust the ratio if needed */
+      }
+      
+      .image-section img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* This ensures the image covers the entire div */
+      }
+      
+      .details-section {
+        flex: 1 1 50%;
+        padding: 40px;
+        text-align: left; /* Align text to left */
+      }
+    .details-section {
+      padding: 40px;
+    }
+    .details-section h3 {
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+    .details-section ul {
+      list-style: none;
+      padding: 0;
+      font-size: 20px;
+    }
+    .details-section ul li {
+      margin-bottom: 10px;
+    }
+    .details-section ul li strong {
+      font-weight: bold;
+    }
+    .details-section h2 {
+      font-size: 26px;
+      margin-top: 30px;
+      margin-bottom: 15px;
+    }
+    .details-section p {
+      font-size: 18px;
+      line-height: 1.6;
+    }
+    .back-to-top {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      background: #ffc107;
+      color: #fff;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      font-size: 24px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .back-to-main {
+        position: fixed;
+        left: 20px;
+        bottom: 20px;
+        background: #007bff;
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 8px;
+        font-size: 18px;
+        text-decoration: none;
+        transition: background-color 0.3s;
+      }
+      .back-to-main:hover {
+        background-color: #0056b3;
+      }
+    
+  </style>
+</head>
+
+<body>
+    <main id="main">
+        <section class="portfolio-details">
+            <div class="container">
+                    <div class="image-section">
+                        <!-- Display the image dynamically -->
+                        <img src="<%= record.image.replace('public/', '/') %>" alt="<%= record.activity %>">
+                        <!-- Add an input for image if you want to allow changing the image -->
+                        <input type="file" name="activityImage">
+                    </div>
+                    <form action="/updateRecord/<%= record.id %>" method="post" enctype="multipart/form-data">
+                        <div class="details-section">
+                            <h3>Edit Activity Information</h3>
+                            <ul>
+                                        <li><strong>Activity:</strong> <input type="text" name="activity" value="<%= record.activity %>"></li>
+                                        <li><strong>Location:</strong> <input type="text" name="location" value="<%= record.location %>"></li>
+                                        <li><strong>Price:</strong> <input type="text" name="price" value="<%= record.price %>"></li>
+                                        <li><strong>Duration:</strong> <input type="text" name="duration" value="<%= record.duration %>"></li>
+                                        <li><strong>Time of Day:</strong> <input type="text" name="time_of_day" value="<%= record.time_of_day %>"></li>
+                                        <li><strong>Season:</strong> <input type="text" name="season" value="<%= record.season %>"></li>
+                                        <li><strong>Indoor/Outdoor:</strong> <input type="text" name="indoor_outdoor" value="<%= record.indoor_outdoor %>"></li>
+                                        <li><strong>Food:</strong> <input type="checkbox" name="food" <%= record.food ? 'checked' : '' %>></li>
+                                        <li><strong>Equipment:</strong> <input type="checkbox" name="equipment" <%= record.equipment ? 'checked' : '' %>></li>
+                                        <li><strong>Equipment Description:</strong> <textarea name="equipment_description"><%= record.equipment_description %></textarea></li>
+                                        <li><strong>Description:</strong> <textarea name="description"><%= record.description %></textarea></li>
+                                    </ul>
+                                    <button type="submit">Submit Changes</button>
+                                </div>
+                            </form>
+                    </div>
+                </section>
+            </main>
+            <a href="/filter" class="back-to-main">Back to Main</a>
+        </body>
+        </html>
