@@ -47,14 +47,14 @@ app.use(express.static("public"));
 const knex = require("knex")({
   client: "pg",
   connection: {
-    host: process.env.RDS_HOSTNAME || "localhost",
-    user: process.env.RDS_USERNAME || "postgres",
-    password: process.env.RDS_PASSWORD || "admin",
-    database: process.env.RDS_DB_NAME || "project3",
+    host: process.env.RDS_HOSTNAME,
+    user: process.env.RDS_USERNAME,
+    password: process.env.RDS_PASSWORD,
+    database: process.env.RDS_DB_NAME,
     port: process.env.RDS_PORT || 5432,
     ssl: process.env.DB ? { rejectUnauthorized: false } : false,
   }, //a dictionary (keys and values)
-}); //parameters go in the ({})
+}); //parameters go in the ({})rameters go in the ({})
 
 // Handling GET request for the landing page
 app.get("/", (req, res) => {
@@ -178,28 +178,27 @@ app.get("/filter", (req, res) => {
     });
 });
 
-app.get("/activity/:id", (req, res) => {
+app.get('/activity/:id', (req, res) => {
   const activityId = req.params.id;
 
-  // Fetch the specific record from the database using the activityId
-  knex
-    .select("*")
-    .from("activity")
-    .where("id", activityId)
-    .then((activityDetails) => {
-      if (activityDetails.length > 0) {
-        // Now recordData is initialized and can be used
-        const recordData = activityDetails[0];
-        res.render("activityDetail", { record: recordData });
-      } else {
-        res.status(404).send("Activity not found");
-      }
-    })
-    .catch((err) => {
-      console.error("Error fetching activity details:", err);
-      res.status(500).send("Error fetching activity details");
+  knex.select('*').from('activity').where('id', activityId)
+      .then(activityDetails => {
+          if (activityDetails.length > 0) {
+              const recordData = activityDetails[0];
+              // Pass 'isLoggedIn' to the EJS template
+              res.render("activityDetail", { 
+                  record: recordData, 
+                  isLoggedIn: req.session.loggedIn || false 
+              });
+          } else {
+              res.status(404).send("Activity not found");
+          }
+      })
+      .catch(err => {
+          console.error('Error fetching activity details:', err);
+          res.status(500).send('Error fetching activity details');
+      });
     });
-});
 
 // Handling POST request for adding users to the data table
 app.post("/storeLogin", (req, res) => {
@@ -361,27 +360,74 @@ app.post("/editLogin", (req, res) => {
     });
 });
 
-app.get("/getRandomRecord", async (req, res) => {
-  try {
-    // Step 1: Get the total number of records
-    const totalRecords = await knex("activity").count("id").first();
-    const totalCount = totalRecords.count;
+// GET route for edit form
+app.get('/editRecord/:id', (req, res) => {
+  const activityId = req.params.id;
 
-    // Step 2: Generate a random number within the bounds (considering records start at 1000)
-    const randomIndex = Math.floor(Math.random() * totalCount) + 1000;
+  knex.select('*').from('activity').where('id', activityId)
+      .then(activityDetails => {
+          if (activityDetails.length > 0) {
+              const recordData = activityDetails[0];
+              res.render("editActivity", { record: recordData }); // Render an edit form with the record data
+          } else {
+              res.status(404).send("Activity not found");
+          }
+      })
+      .catch(err => {
+          console.error('Error fetching activity for edit:', err);
+          res.status(500).send('Error fetching activity');
+      });
+});
 
-    // Step 3: Use the random number to select the corresponding record
-    const randomRecord = await knex("activity")
-      .select()
-      .where("id", randomIndex)
-      .first();
+app.post('/updateRecord/:id', upload.single('activityImage'), (req, res) => {
+  const activityId = req.params.id;
+  const { activity, location, price, duration, time_of_day, season, indoor_outdoor, equipment_description, description } = req.body;
 
-    // Send the random record as a response
-    res.json(randomRecord);
-  } catch (error) {
-    console.error("Error fetching random record:", error);
-    res.status(500).send("Error fetching random record");
-  }
+  // Convert checkbox values to boolean
+  const food = req.body.food === 'on';
+  const equipment = req.body.equipment === 'on';
+
+  // Check if a new image has been uploaded
+  const newImagePath = req.file ? req.file.path : null;
+
+  knex('activity')
+      .where('id', activityId)
+      .update({
+          activity: activity,
+          location: location,
+          price: price,
+          duration: duration,
+          time_of_day: time_of_day,
+          season: season,
+          indoor_outdoor: indoor_outdoor,
+          food: food,
+          equipment: equipment,
+          equipment_description: equipment_description,
+          description: description,
+          image: newImagePath || knex.raw('??', ['image']) // Use new image path or retain the existing one
+      })
+      .then(() => {
+          res.send(`<script>alert("Activity updated successfully."); window.location.href = "/activity/${activityId}"; </script>`);
+      })
+      .catch((err) => {
+          console.error(err);
+          res.status(500).send(`<script>alert("Error updating activity."); window.location.href = "/editRecord/${activityId}"; </script>`);
+      });
+});
+
+app.get('/deleteRecord/:id', (req, res) => {
+  const activityId = req.params.id;
+
+  knex('activity')
+      .where('id', activityId)
+      .del()
+      .then(() => {
+          res.send(`<script>alert("Activity deleted successfully."); window.location.href = "/"; </script>`);
+      })
+      .catch((err) => {
+          console.error(err);
+          res.status(500).send('Error deleting activity');
+      });
 });
 
 app.listen(port, () => console.log("Server is Listening")); //last line!!
