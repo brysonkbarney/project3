@@ -361,4 +361,27 @@ app.post("/editLogin", (req, res) => {
     });
 });
 
+app.get("/getRandomRecord", async (req, res) => {
+  try {
+    // Step 1: Get the total number of records
+    const totalRecords = await knex("activity").count("id").first();
+    const totalCount = totalRecords.count;
+
+    // Step 2: Generate a random number within the bounds (considering records start at 1000)
+    const randomIndex = Math.floor(Math.random() * totalCount) + 1000;
+
+    // Step 3: Use the random number to select the corresponding record
+    const randomRecord = await knex("activity")
+      .select()
+      .where("id", randomIndex)
+      .first();
+
+    // Send the random record as a response
+    res.json(randomRecord);
+  } catch (error) {
+    console.error("Error fetching random record:", error);
+    res.status(500).send("Error fetching random record");
+  }
+});
+
 app.listen(port, () => console.log("Server is Listening")); //last line!!
