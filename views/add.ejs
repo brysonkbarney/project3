@@ -1,6 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
 
+    .form-container {
+      max-width: 600px;
+      margin: 50px auto;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+    }
+
+    .form-container label {
+      display: block;
+      margin-bottom: 8px;
+      text-align: left;
+    }
+
+    .slider-container input,
+    .form-container textarea,
+    .form-container select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+
+    .form-container button {
+      background-color: #007bff;
+      color: #fff;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      display: block;
+      margin: 0 auto; /* Center the button */
+    }
+
+    .form-container button:hover {
+      background-color: #0056b3;
+    }
+
+    .slider-container {
+      position: relative;
+      width: 100%;
+    }
+
+    .number-label {
+      display: flex;
+      justify-content: space-between;
+      padding: 0 5px;
+      margin-top: 5px;
+    }
+
+    .number-label span {
+      flex: 1;
+      text-align: center;
+    }
+
+    .equipmentConditional-prompt {
+      display: none;
+    }
+
+  </style>
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -71,32 +138,35 @@
   <main id="main">
 
     <!-- ======= Frequently Asked Questions Section ======= -->
-    <section id="faq" class="faq section-bg">
+    <section id="faq" class="faq section-bg" style="background-color: white; padding-bottom: 0%;">
       <div class="container">
 
         <div class="section-title">
-          <h2 id="about">Find the Perfect Activity for You.</h2>
-          <!--<p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>-->
+          <h2 id="about">Submit Your Favorite Activity.</h2>
         </div>
     </section>
-    <br>
-    <div>
+
+    <!--Add an activity form-->
+    <div class="form-container">
         <section class="inner-page">
             <div class="container">
-              <p>
                 <form action="/storeData" method="post" enctype="multipart/form-data">
                   
+                    <!--Activity box-->
                     <label for="activity">Activity:</label>
                     <input type="activity" id="activity" name="activity" required><br><br>
-                    <label for="description">Description:</label><br>
+
+                    <!--Description-->
+                    <label for="description">Description:</label>
                     <textarea id="description" name="description" rows="4" required></textarea><br><br>
 
-
-                    <label for="equipment">Requires equipment/gear?</label><br>
+                    <!--Equipment-->
+                    <label for="equipment">Requires equipment/gear?</label>
                     <input type="radio" id="equipmentYes" name="equipment" value="True" onchange="requiresEquipment()">
-                    <label for="equipmentYes">Yes</label><br>
+                    <label for="equipmentYes">Yes</label>
                     <input type="radio" id="equipmentNo" name="equipment" value="False" checked onchange="requiresEquipment()">
                     <label for="equipmentNo">No</label><br><br>
+
                     <!-- Additional prompt that is initially hidden, shown only if 'Yes' is selected -->
                     <div class="equipmentConditional-prompt">
                         <label for="equipment_description">Description of required equipment:</label>
@@ -110,6 +180,8 @@
                         <label for="whichCity">Which city?</label>
                         <input type="text" id="whichCity" name="whichCity"><br><br>
                     </div>-->
+
+                    <!--Price-->
                     <label for="price">Price Range (per person):</label>
                     <select id="price" name="price">
                         <option value="free">Free</option>
@@ -119,7 +191,8 @@
                         <option value="$50+">$50+</option>
                     </select><br><br>
 
-                    <label for="location">City Location:</label><br>
+                    <!--Location-->
+                    <label for="location">City Location:</label>
                     <select id="location" name="location">
                       <option value="Provo">Provo</option>
                       <option value="Orem">Orem</option>
@@ -140,7 +213,9 @@
                         <option value="dateNight">Date night with my significant other</option>
                         <option value="group">Group activity</option>
                     </select><br> -->
-                    <label for="type">Type:</label><br>
+
+                    <!--Activity Type-->
+                    <label for="type">Type:</label>
                     <select id="type" name="type">
                       <option value="Just me, myself, & I">Just me, myself, & I</option>
                       <option value="First date">First date</option>
@@ -148,38 +223,40 @@
                       <option value="Group activity">Group activity</option>
                     </select><br><br>
                     
-                    <label for="duration_slider">Duration (in hours):</label>
+                    <!--Duration-->
                     <div class="slider-container">
-                        <input type="range" id="duration_slider" name="duration_slider" min="0" max="10" step="1" value="5" list="tickmarks">
-                        <div class="number-label">
-                            <!-- <span>0</span> -->
-                            <span>1</span>
-                            <span>2</span>
-                            <span>3</span>
-                            <span>4</span>
-                            <span>5</span>
-                            <span>6</span>
-                            <span>7</span>
-                            <span>8</span>
-                            <span>9</span>
-                            <!-- <span>10</span> -->
-                        </div>
+                    <label for="duration_slider">Duration (in hours):</label>
+                      <input type="range" id="duration_slider" name="duration_slider" min="0" max="10" step="1" value="5" list="tickmarks">
+                      <div class="number-label">
+                        <span>0</span>
+                        <span>1</span>
+                        <span>2</span>
+                        <span>3</span>
+                        <span>4</span>
+                        <span>5</span>
+                        <span>6</span>
+                        <span>7</span>
+                        <span>8</span>
+                        <span>9</span>
+                        <span>10</span>
+                      </div>
                     </div>
-                    <datalist id="duration" name="duration">
-                        <!-- <option value="0" label="0"> -->
-                        <option value="1" label="1">
-                        <option value="2" label="2">
-                        <option value="3" label="3">
-                        <option value="4" label="4">
-                        <option value="5" label="5">
-                        <option value="6" label="6">
-                        <option value="7" label="7">
-                        <option value="8" label="8">
-                        <option value="9" label="9">
-                        <!-- <option value="10" label="10"> -->
+                    <datalist id="tickmarks">
+                      <option value="0" label="0">
+                      <option value="1" label="1">
+                      <option value="2" label="2">
+                      <option value="3" label="3">
+                      <option value="4" label="4">
+                      <option value="5" label="5">
+                      <option value="6" label="6">
+                      <option value="7" label="7">
+                      <option value="8" label="8">
+                      <option value="9" label="9">
+                      <option value="10" label="10">
                     </datalist><br><br>
 
-                    <label for="time_of_day">Time of Day:</label><br>
+                    <!--Time of Day-->
+                    <label for="time_of_day">Time of Day:</label>
                         <select id="time_of_day" name="time_of_day">
                         <option value="Morning">Morning</option>
                         <option value="Afternoon">Afternoon</option>
@@ -187,31 +264,37 @@
                         <option value="Doesn't Matter">Doesn't Matter</option>
                         </select><br><br>
 
-                        <label for="season">Season:</label><br>
-                        <select id="season" name="season">
-                          <option value="Spring">Spring</option>
-                          <option value="Summer">Summer</option>
-                          <option value="Fall">Fall</option>
-                          <option value="Winter">Winter</option>
-                          <option value="Doesn't Matter">Doesn't Matter</option>
-                        </select><br><br>
+                    <!--Season-->
+                    <label for="season">Season:</label>
+                    <select id="season" name="season">
+                      <option value="Spring">Spring</option>
+                      <option value="Summer">Summer</option>
+                      <option value="Fall">Fall</option>
+                      <option value="Winter">Winter</option>
+                      <option value="Doesn't Matter">Doesn't Matter</option>
+                    </select><br><br>
                         
-                        <label for="indoor_outdoor">Activity Location:</label><br>
-                        <select id="indoor_outdoor" name="indoor_outdoor">
-                          <option value="Indoors">Indoors</option>
-                          <option value="Outdoors">Outdoors</option>
-                          <option value="Doesn't Matter">Doesn't Matter</option>
-                        </select><br><br>
+                    <!--Indoor/Outdoor-->
+                    <label for="indoor_outdoor">Activity Location:</label>
+                    <select id="indoor_outdoor" name="indoor_outdoor">
+                      <option value="Indoors">Indoors</option>
+                      <option value="Outdoors">Outdoors</option>
+                      <option value="Doesn't Matter">Doesn't Matter</option>
+                    </select><br><br>
 
-                    <label>Involves food?</label><br>
+                    <!--Food-->
+                    <label>Involves food?</label>
                     <input type="radio" id="foodYes" name="food" value="True">
-                    <label for="foodYes">Yes</label><br>
+                    <label for="foodYes">Yes</label>
                     <input type="radio" id="foodNo" name="food" value="False">
                     <label for="foodNo">No</label>
                     <br><br>
+
+                    <!--Image-->
                     <label for="activityImage">Upload Image:</label>
                     <input type="file" id="activityImage" name="activityImage" accept="image/*" required><br><br>
                     <br><br>
+
                     <!--functions for conditional prompts-->
                     <script>
                         function requiresEquipment() {
@@ -225,21 +308,11 @@
                         // Initial call to set the correct display state when the page loads
                         window.onload = requiresEquipment;
                     </script>
-                    <button type="submit">Submit Activity Now.</button>
+                    <button type="submit">Submit Activity Now</button>
                 </form>
                 <br><br>
     </div>
     <!-- ======= Cta Section ======= -->
-    <section id="cta" class="cta">
-        <div class="container">
-          <div class="text-center">
-            <h3>Add Activities Now.</h3>
-            <p></p>
-            <a class="cta-btn" href=''>Search</a>
-          </div>
-        </div>
-    </section>
-    <br>
     </div>
       <div class="social-links text-center text-md-right pt-3 pt-md-0">
         <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
