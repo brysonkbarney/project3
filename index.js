@@ -198,9 +198,7 @@ app.get('/activity/:id', (req, res) => {
           console.error('Error fetching activity details:', err);
           res.status(500).send('Error fetching activity details');
       });
-
-
-
+    });
 
 // Handling POST request for adding users to the data table
 app.post("/storeLogin", (req, res) => {
