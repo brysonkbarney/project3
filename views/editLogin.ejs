@@ -82,21 +82,20 @@
 
         <!-- Verify Login Form -->
         <div style="display: flex; justify-content: center; align-items: center; height: 60vh;">
-          <form action="/storeLogin" method="post"
+          <form action="/editLogin" method="post"
             style="padding: 20px; background-color: white; border-radius: 10px; max-width: 400px; width: 100%; box-sizing: border-box;">
-            <p style="color: black; font-size: 20px; font-weight: bold; text-align: center;">Enter a new username and
-              password to create your account</p>
+            <p style="color: black; font-size: 20px; font-weight: bold; text-align: center;">Edit Account</p>
             <label for="login-username">Username:</label><br>
-            <input type="text" id="login-username" name="username" required style="width: 100%; margin-bottom: 10px;"
-              required><br>
+            <input type="text" id="login-username" name="username" value="<%= userinfo.username %>" required
+              style="width: 100%; margin-bottom: 10px;" required><br>
 
             <label for="login-password">Password:</label><br>
-            <input type="password" id="login-password" name="password" required
+            <input type="password" id="login-password" name="password" value="<%= userinfo.password %>" required
               style="width: 100%; margin-bottom: 10px;" required><br>
             <br>
             <div style="display: flex; justify-content: center;">
               <button type="submit"
-                style="width: 40%; padding: 8px; background-color: #56b8e6; color: white; border: none; border-radius: 5px; cursor: pointer;">Create</button>
+                style="width: 40%; padding: 8px; background-color: #56b8e6; color: white; border: none; border-radius: 5px; cursor: pointer;">Edit</button>
             </div>
           </form>
         </div>

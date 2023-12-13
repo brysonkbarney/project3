@@ -14,7 +14,9 @@
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -47,7 +49,7 @@
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+          <li><a class="nav-link scrollto" href="#hero">Home</a></li>
           <!--<li><a class="nav-link scrollto" href="#Browse">Browse</a></li>-->
           <li><a class="nav-link scrollto " href="/filter">Search</a></li>
           <li><a class="nav-link scrollto" href="/add">Add</a></li>
@@ -77,14 +79,16 @@
         <div class="row">
           <div class="col-lg-6">
             <!--<img src="assets/img/about.jpg" class="img-fluid" alt="">-->
-            <img src="assets/img/backgroundRemoved.png" class="img-fluid" alt="" style="margin-left: 50px; width: 450px;">
+            <img src="assets/img/backgroundRemoved.png" class="img-fluid" alt=""
+              style="margin-left: 50px; width: 450px;">
           </div>
           <div class="col-lg-6 pt-4 pt-lg-0">
             <h3>What is Cougar Connect?</h3>
             <p style="line-height: 2;">
-              Welcome to Cougar Connect, your go-to platform for unlocking endless ideas for date and group activities! 
-              Designed exclusively for college students, Cougar Connect takes the guesswork out of planning memorable dates and group activities. 
-              Living in a small college town like Provo can sometimes limit options, but with Cougar Connect, 
+              Welcome to Cougar Connect, your go-to platform for unlocking endless ideas for date and group activities!
+              Designed exclusively for college students, Cougar Connect takes the guesswork out of planning memorable
+              dates and group activities.
+              Living in a small college town like Provo can sometimes limit options, but with Cougar Connect,
               you can customize your preferences and effortlessly generate exciting ideas tailored just for you.
               Break free from boredom and discover a community where you can not only explore curated suggestions
               but also contribute your own favorite date and activity ideas to enrich the experience for fellow users.
@@ -106,66 +110,48 @@
       </div>
     </section><!-- End Cta Section -->
 
-    <!-- ======= Frequently Asked Questions Section ======= -->
+    <!-- ======= Random activity Section ======= -->
     <section id="faq" class="faq section-bg">
-      <div class="container">
-
-        <div class="section-title">
-          <h2 id="about">Browse Some of our Most Popular Ideas.</h2>
-          <!--<p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>-->
+      <div class="section-title">
+        <h2 id="about">Generate a random activity!</h2>
+        <button onclick="generateRandomActivity()" class="btn btn-primary mt-3"
+          style="background-color: #ffc107; color: #fff; border: none;">Generate</button>
+        <div id="randomActivityDetails" class="text-center mt-4">
+          <!-- Display the details of the random activity here -->
         </div>
-
-        <div class="faq-list">
-          <ul>
-            <li data-aos="fade-up">
-              <i class="bx icon-help bx-heart-circle"></i> <a data-bs-toggle="collapse" class="collapse" data-bs-target="#faq-list-1">Non consectetur a erat nam at lectus urna duis? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-              <div id="faq-list-1" class="collapse show" data-bs-parent=".faq-list">
-                <p>
-                  Feugiat pretium nibh ipsum consequat. Tempus iaculis urna id volutpat lacus laoreet non curabitur gravida. Venenatis lectus magna fringilla urna porttitor rhoncus dolor purus non.
-                </p>
-              </div>
-            </li>
-
-            <li data-aos="fade-up" data-aos-delay="100">
-              <i class="bx bx-heart-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-2" class="collapsed">Feugiat scelerisque varius morbi enim nunc? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-              <div id="faq-list-2" class="collapse" data-bs-parent=".faq-list">
-                <p>
-                  Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.
-                </p>
-              </div>
-            </li>
-
-            <li data-aos="fade-up" data-aos-delay="200">
-              <i class="bx bx-heart-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-3" class="collapsed">Dolor sit amet consectetur adipiscing elit? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-              <div id="faq-list-3" class="collapse" data-bs-parent=".faq-list">
-                <p>
-                  Eleifend mi in nulla posuere sollicitudin aliquam ultrices sagittis orci. Faucibus pulvinar elementum integer enim. Sem nulla pharetra diam sit amet nisl suscipit. Rutrum tellus pellentesque eu tincidunt. Lectus urna duis convallis convallis tellus. Urna molestie at elementum eu facilisis sed odio morbi quis
-                </p>
-              </div>
-            </li>
-
-            <li data-aos="fade-up" data-aos-delay="300">
-              <i class="bx bx-heart-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-4" class="collapsed">Tempus quam pellentesque nec nam aliquam sem et tortor consequat? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-              <div id="faq-list-4" class="collapse" data-bs-parent=".faq-list">
-                <p>
-                  Molestie a iaculis at erat pellentesque adipiscing commodo. Dignissim suspendisse in est ante in. Nunc vel risus commodo viverra maecenas accumsan. Sit amet nisl suscipit adipiscing bibendum est. Purus gravida quis blandit turpis cursus in.
-                </p>
-              </div>
-            </li>
-
-            <li data-aos="fade-up" data-aos-delay="400">
-              <i class="bx bx-heart-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-5" class="collapsed">Tortor vitae purus faucibus ornare. Varius vel pharetra vel turpis nunc eget lorem dolor? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-              <div id="faq-list-5" class="collapse" data-bs-parent=".faq-list">
-                <p>
-                  Laoreet sit amet cursus sit amet dictum sit amet justo. Mauris vitae ultricies leo integer malesuada nunc vel. Tincidunt eget nullam non nisi est sit amet. Turpis nunc eget lorem dolor sed. Ut venenatis tellus in metus vulputate eu scelerisque.
-                </p>
-              </div>
-            </li>
-
-          </ul>
-        </div>
-
       </div>
+
+      <script>
+        // JavaScript function to fetch and display a random activity
+        function generateRandomActivity() {
+          fetch('/getRandomRecord') // Assuming your route for getting a random record is '/getRandomRecord'
+            .then(response => response.json())
+            .then(data => {
+              // Display the details of the random activity
+              const randomActivityDetails = document.getElementById('randomActivityDetails');
+              randomActivityDetails.innerHTML = `
+            <div class="row justify-content-center">
+              <div class="col-md-6 mb-4">
+                <a href="/activity/${data.id}" class="card-link">
+                  <div class="card h-100">
+                    ${data.image ? `<img src="/${data.image.substring(data.image.indexOf('/') + 1)}" alt="Activity Image" class="card-img-top">` : '<img src="/path/to/placeholder-image.jpg" alt="No image available" class="card-img-top">'}
+                    <div class="card-body">
+                      <h5 class="card-title">${data.activity}</h5>
+                      <p class="card-text">${data.description}</p>
+                      <p class="card-text">${data.location} - ${data.price}</p>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          `;
+            })
+            .catch(error => {
+              console.error('Error fetching random activity:', error);
+              // Handle error, e.g., display an error message
+            });
+        }
+      </script>
     </section><!-- End Frequently Asked Questions Section -->
 
     <!-- ======= Contact Section ======= -->
@@ -299,23 +285,24 @@
         </div>
         <div class="credits">
           <!-- All the links in the footer should remain intact. -->
-          <!-- You can delete the links only if you purchased the pro version. -->
-          <!-- Licensing information: https://bootstrapmade.com/license/ -->
-          <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/baker-free-onepage-bootstrap-theme/ -->
-          </a>
-        </div>
-      </div>
-      <div class="social-links text-center text-md-right pt-3 pt-md-0">
-        <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-        <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-        <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-        <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-        <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-      </div>
-    </div>
+  <!-- You can delete the links only if you purchased the pro version. -->
+  <!-- Licensing information: https://bootstrapmade.com/license/ -->
+  <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/baker-free-onepage-bootstrap-theme/ -->
+  </a>
+  </div>
+  </div>
+  <div class="social-links text-center text-md-right pt-3 pt-md-0">
+    <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+    <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+    <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+    <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+    <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+  </div>
+  </div>
   </footer><!-- End Footer -->
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
   <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>

@@ -2,360 +2,379 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Cougar Connect</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+    <title>Cougar Connect</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
 
-  <!-- Favicons -->
-  <link href="assets/img/apple-touch-icon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <!-- Favicons -->
+    <link href="assets/img/apple-touch-icon.png" rel="icon">
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+        rel="stylesheet">
 
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <!-- Vendor CSS Files -->
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
-  <!-- Template Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet">
+    <!-- Template Main CSS File -->
+    <link href="assets/css/style.css" rel="stylesheet">
 
-  <!-- =======================================================
+    <!-- =======================================================
   * Template Name: Baker
   * Updated: Sep 18 2023 with Bootstrap v5.3.2
   * Template URL: https://bootstrapmade.com/baker-free-onepage-bootstrap-theme/
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
-  <style>
-    .filter-bar {
-        padding: 20px;
-        background-color: #f7f7f7;
-        display: flex;
-        gap: 10px;
-        flex-wrap: wrap;
-        align-items: center;
-        border-radius: 8px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
+    <style>
+        .filter-bar {
+            padding: 20px;
+            background-color: #f7f7f7;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            align-items: center;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
 
-    .filter-bar select,
-    .filter-bar input {
-        padding: 10px;
-        border: 1px solid #ddd;
-        border-radius: 4px;
-        font-size: 14px;
-    }
+        .filter-bar select,
+        .filter-bar input {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
 
-    .filter-bar label {
-        font-weight: bold;
-        margin-right: 5px;
-    }
+        .filter-bar label {
+            font-weight: bold;
+            margin-right: 5px;
+        }
 
-    .filter-bar button {
-        padding: 10px 20px;
-        background-color: #ffc107;;
-        color: white;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-    }
+        .filter-bar button {
+            padding: 10px 20px;
+            background-color: #ffc107;
+            ;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
 
-    .filter-bar button:hover {
-        opacity: 0.9;
-    }
+        .filter-bar button:hover {
+            opacity: 0.9;
+        }
 
-    .filter-popup {
-        display: none;
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        border: 1px solid #ddd;
-        padding: 20px;
-        background-color: white;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-        z-index: 2;
-        width: auto; /* or a specific width like 400px */
-        max-width: 90%; /* To ensure it doesn't get too wide on larger screens */
-        box-sizing: border-box;
-    }
-    
-    
-    /* Overlay */
-    .overlay {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0,0,0,0.5);
-        z-index: 1;
-    }
+        .filter-popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 1px solid #ddd;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            z-index: 2;
+            width: auto;
+            /* or a specific width like 400px */
+            max-width: 90%;
+            /* To ensure it doesn't get too wide on larger screens */
+            box-sizing: border-box;
+        }
 
-    .card-link {
-        text-decoration: none; /* Removes underline from links */
-        color: inherit; /* Inherits text color from parent */
-      }
-      
-      .card-link:hover .card {
-        /* Optional: add hover effects */
-        transform: translateY(-5px);
-        box-shadow: 0px 12px 20px rgba(0,0,0,0.2);
-      }
 
-    .close-button {
-        position: absolute;
-        top: 10px;
-        right: 15px;
-        border: none;
-        background: none;
-        font-size: 24px;
-        cursor: pointer;
-    }
+        /* Overlay */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
 
-    .inline-p {
-        display: inline-block; /* Or use 'inline' */
-        margin-right: 10px; /* Optional: adds some space between the elements */
-    }   
-</style>
+        .card-link {
+            text-decoration: none;
+            /* Removes underline from links */
+            color: inherit;
+            /* Inherits text color from parent */
+        }
+
+        .card-link:hover .card {
+            /* Optional: add hover effects */
+            transform: translateY(-5px);
+            box-shadow: 0px 12px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .close-button {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            border: none;
+            background: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .inline-p {
+            display: inline-block;
+            /* Or use 'inline' */
+            margin-right: 10px;
+            /* Optional: adds some space between the elements */
+        }
+    </style>
 </head>
 
 <body>
 
-  <!-- ======= Header ======= -->
-  <header id="header" class="fixed-top header-transparent">
-    <div class="container d-flex align-items-center justify-content-between">
+    <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top header-transparent">
+        <div class="container d-flex align-items-center justify-content-between">
 
-      <h1 class="logo"><a href="/">Cougar Connect</a></h1>
-      <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+            <h1 class="logo"><a href="/">Cougar Connect</a></h1>
+            <!-- Uncomment below if you prefer to use an image logo -->
+            <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
-      <nav id="navbar" class="navbar">
-        <ul>
-            <li><a class="nav-link scrollto active" href="/">Home</a></li>
-            <!--<li><a class="nav-link scrollto" href="#Browse">Browse</a></li>-->
-            <li><a class="nav-link scrollto " href="/filter">Search</a></li>
-            <li><a class="nav-link scrollto" href="/add">Add</a></li>
-            <li><a class="nav-link scrollto" href="/account">Account</a></li>
-        </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
+            <nav id="navbar" class="navbar">
+                <ul>
+                    <li><a class="nav-link scrollto" href="/">Home</a></li>
+                    <!--<li><a class="nav-link scrollto" href="#Browse">Browse</a></li>-->
+                    <li><a class="nav-link scrollto" href="/filter">Search</a></li>
+                    <li><a class="nav-link scrollto" href="/add">Add</a></li>
+                    <li><a class="nav-link scrollto" href="/account">Account</a></li>
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav><!-- .navbar -->
 
-    </div>
-  </header><!-- End Header -->
+        </div>
+    </header><!-- End Header -->
 
-  <!-- ======= Hero Section ======= -->
-  <section id="heroModified" class="d-flex align-items-center justify-content-center">
-    <div class="container position-relative">
-      <!--<h1>Welcome to Cougar Connect.</h1> <!--or perfect pick
+    <!-- ======= Hero Section ======= -->
+    <section id="heroModified" class="d-flex align-items-center justify-content-center">
+        <div class="container position-relative">
+            <!--<h1>Welcome to Cougar Connect.</h1> <!--or perfect pick
       <h2>Never run out of ideas again: your preferences, your filters, the perfect acitivty for anyone.</h2>
       <a href="#about" class="btn-get-started scrollto">Get Started</a>-->
-    </div>
-  </section><!-- End Hero -->
+        </div>
+    </section><!-- End Hero -->
 
-  <main id="main">
+    <main id="main">
 
-    <div id="filterPopup" class="filter-popup">
-        <button id="closeFilterPopup" class="close-button">&times;</button>
-        <form action="/filter" method="GET" class="filter-bar">
-            <div class="filter-bar">
-                <div class="filter-item">
-                    <label for="filter-type">Type:</label>
-                    <select id="filter-type" name="type">
-                        <option value="">Any</option>
-                        <option value="Just me, myself, & I">Just me, myself, & I</option>
-                        <option value="First date">First date</option>
-                        <option value="Date night with my significant other">Date night with my significant other</option>
-                        <option value="Group Activity">Group Activity</option>
-                        <!-- Add more options based on your database contents -->
-                    </select>
-                </div>
+        <div id="filterPopup" class="filter-popup">
+            <button id="closeFilterPopup" class="close-button">&times;</button>
+            <form action="/filter" method="GET" class="filter-bar">
+                <div class="filter-bar">
+                    <div class="filter-item">
+                        <label for="filter-type">Type:</label>
+                        <select id="filter-type" name="type">
+                            <option value="">Any</option>
+                            <option value="Just me, myself, & I">Just me, myself, & I</option>
+                            <option value="First date">First date</option>
+                            <option value="Date night with my significant other">Date night with my significant other
+                            </option>
+                            <option value="Group Activity">Group Activity</option>
+                            <!-- Add more options based on your database contents -->
+                        </select>
+                    </div>
 
-                <div class="filter-item">
-                    <label for="filter-location">City Location:</label>
-                    <select id="filter-location"  name="location">
-                        <option value="Doesn't Matter">Doesn't Matter</option>
-                        <option value="Provo">Provo</option>
-                        <option value="Orem">Orem</option>
-                        <option value="Lehi">Lehi</option>
-                        <option value="American Fork">American Fork</option>
-                        <option value="Salt Lake City">Salt Lake City</option>
-                        <option value="Midway">Midway</option>
-                        <option value="Park City">Park City</option>
-                        <!-- Add more options based on your database contents -->
-                    </select>
-                </div>
+                    <div class="filter-item">
+                        <label for="filter-location">City Location:</label>
+                        <select id="filter-location" name="location">
+                            <option value="Doesn't Matter">Doesn't Matter</option>
+                            <option value="Provo">Provo</option>
+                            <option value="Orem">Orem</option>
+                            <option value="Lehi">Lehi</option>
+                            <option value="American Fork">American Fork</option>
+                            <option value="Salt Lake City">Salt Lake City</option>
+                            <option value="Midway">Midway</option>
+                            <option value="Park City">Park City</option>
+                            <!-- Add more options based on your database contents -->
+                        </select>
+                    </div>
 
-                <div class="filter-item">
-                    <label for="filter-price">Price:</label>
-                    <select id="filter-price" name="price">
-                        <option value="">Any</option>
-                        <option value="free">Free</option>
-                        <option value="$0-$15">$0-$15</option>
-                        <option value="$15-$30">$15-$30</option>
-                        <option value="$30-50">$30-50</option>
-                        <option value="$50+">$50+</option>
-                        <!-- Add more options based on your database contents -->
-                    </select>
-                </div>
+                    <div class="filter-item">
+                        <label for="filter-price">Price:</label>
+                        <select id="filter-price" name="price">
+                            <option value="">Any</option>
+                            <option value="free">Free</option>
+                            <option value="$0-$15">$0-$15</option>
+                            <option value="$15-$30">$15-$30</option>
+                            <option value="$30-50">$30-50</option>
+                            <option value="$50+">$50+</option>
+                            <!-- Add more options based on your database contents -->
+                        </select>
+                    </div>
 
-                <div class="filter-item">
-                    <label for="filter-duration">Duration:</label>
-                    <select id="filter-duration" name="duration">
-                        <option value="">Any</option>
-                        <option value="1" label="1">
-                        <option value="2" label="2">
-                        <option value="3" label="3">
-                        <option value="4" label="4">
-                        <option value="5" label="5">
-                        <option value="6" label="6">
-                        <option value="7" label="7">
-                        <option value="8" label="8">
-                        <option value="9" label="9">
-                        <!-- Add more options based on your database contents -->
-                    </select>
-                </div>
+                    <div class="filter-item">
+                        <label for="filter-duration">Duration:</label>
+                        <select id="filter-duration" name="duration">
+                            <option value="">Any</option>
+                            <option value="1" label="1">
+                            <option value="2" label="2">
+                            <option value="3" label="3">
+                            <option value="4" label="4">
+                            <option value="5" label="5">
+                            <option value="6" label="6">
+                            <option value="7" label="7">
+                            <option value="8" label="8">
+                            <option value="9" label="9">
+                                <!-- Add more options based on your database contents -->
+                        </select>
+                    </div>
 
-                <div class="filter-item">
-                    <label for="filter-time_of_day">Time of Day:</label>
-                    <select id="filter-time_of_day" name="time_of_day">
-                        <option value="Doesn't Matter">Doesn't Matter</option>
-                        <option value="Morning">Morning</option>
-                        <option value="Afternoon">Afternoon</option>
-                        <option value="Evening">Evening</option>
-                        <!-- Add more options based on your database contents -->
-                    </select>
-                </div>
+                    <div class="filter-item">
+                        <label for="filter-time_of_day">Time of Day:</label>
+                        <select id="filter-time_of_day" name="time_of_day">
+                            <option value="Doesn't Matter">Doesn't Matter</option>
+                            <option value="Morning">Morning</option>
+                            <option value="Afternoon">Afternoon</option>
+                            <option value="Evening">Evening</option>
+                            <!-- Add more options based on your database contents -->
+                        </select>
+                    </div>
 
-                <div class="filter-item">
-                    <label for="filter-season">Season:</label>
-                    <select id="filter-season" name="season">
-                        <option value="">Any</option>
-                        <option value="Spring">Spring</option>
-                        <option value="Summer">Summer</option>
-                        <option value="Fall">Fall</option>
-                        <option value="Winter">Winter</option>
-                        <!-- Add more options based on your database contents -->
-                    </select>
-                </div>
+                    <div class="filter-item">
+                        <label for="filter-season">Season:</label>
+                        <select id="filter-season" name="season">
+                            <option value="">Any</option>
+                            <option value="Spring">Spring</option>
+                            <option value="Summer">Summer</option>
+                            <option value="Fall">Fall</option>
+                            <option value="Winter">Winter</option>
+                            <!-- Add more options based on your database contents -->
+                        </select>
+                    </div>
 
-                <div class="filter-item">
-                    <label for="filter-indoor_outdoor">Indoor or Outdoor:</label>
-                    <select id="filter-indoor_outdoor" name="indoor_outdoor">
-                        <option value="">Any</option>
-                        <option value="Indoors">Indoors</option>
-                        <option value="Outdoors">Outdoors</option>
-                        <!-- Add more options based on your database contents -->
-                    </select>
-                </div>
+                    <div class="filter-item">
+                        <label for="filter-indoor_outdoor">Indoor or Outdoor:</label>
+                        <select id="filter-indoor_outdoor" name="indoor_outdoor">
+                            <option value="">Any</option>
+                            <option value="Indoors">Indoors</option>
+                            <option value="Outdoors">Outdoors</option>
+                            <!-- Add more options based on your database contents -->
+                        </select>
+                    </div>
 
-                <div class="filter-item">
-                    <label for="filter-equipment">Equipment:</label>
-                    <select id="filter-equipment" name="equipment">
-                        <option value="">Any</option>
-                        <option value="Yes">Yes</option>
-                        <option value="No">No</option>
-                        <!-- Add more options based on your database contents -->
-                    </select>
-                </div>
+                    <div class="filter-item">
+                        <label for="filter-equipment">Equipment:</label>
+                        <select id="filter-equipment" name="equipment">
+                            <option value="">Any</option>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                            <!-- Add more options based on your database contents -->
+                        </select>
+                    </div>
 
-                <div class="filter-item">
-                    <label for="filter-food">Food:</label>
-                    <select id="filter-food" name="food">
-                        <option value="">Any</option>
-                        <option value="Yes">Yes</option>
-                        <option value="No">No</option>
-                        <!-- Add more options based on your database contents -->
-                    </select>
-                </div>
-                <div class="filter-buttons">
-                    <button type="submit">Search</button>
-                </div>
-            </div>
-        </form>
-    </div>
-    <!-- Add container for the cards -->
-<div class="container mt-4">
-    <div class="section-title">
-        <h2 id="about">Find the Perfect Activity for You.</h2>
-        <p class="inline-p"><a href="#" id="filterButton">Filter</a></p>
-        <p class="inline-p"><a href="/filter">Reset</a></p>
-        <!--<p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>-->
-    </div>
-    <div class="row">
-        <% for (let i = 0; i < myactivity.length; i++) { %>
-          <% const activity = myactivity[i]; %>
-          <!-- Each card is in a column that spans 3 out of 12 columns -->
-          <div class="col-md-3 mb-4">
-              <a href="/activity/<%= activity.id %>" class="card-link">
-                <div class="card h-100">
-                    <% if (activity.image) { %>
-                        <img src="/<%= activity.image.substring(activity.image.indexOf('/') + 1) %>" alt="Activity Image" class="card-img-top">
-                    <% } else { %>
-                        <!-- Placeholder image or leave empty -->
-                        <img src="/path/to/placeholder-image.jpg" alt="No image available" class="card-img-top">
-                    <% } %>
-                    <div class="card-body">
-                        <h5 class="card-title"><%= activity.activity %></h5>
-                        <p class="card-text"><%= activity.description %></p>
-                        <p class="card-text"><%= activity.location %> - <%= activity.price %></p>
+                    <div class="filter-item">
+                        <label for="filter-food">Food:</label>
+                        <select id="filter-food" name="food">
+                            <option value="">Any</option>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                            <!-- Add more options based on your database contents -->
+                        </select>
+                    </div>
+                    <div class="filter-buttons">
+                        <button type="submit">Search</button>
                     </div>
                 </div>
-              </a>
-          </div>
-        <% } %>
-    </div>
-</div>
-  
-<div class="social-links text-center text-md-right pt-3 pt-md-0">
-  <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-  <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-  <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-  <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-  <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-</div>
-</div>
+            </form>
+        </div>
+        <!-- Add container for the cards -->
+        <div class="container mt-4">
+            <div class="section-title">
+                <h2 id="about">Find the Perfect Activity for You.</h2>
+                <p class="inline-p"><a href="#" id="filterButton">Filter</a></p>
+                <p class="inline-p"><a href="/filter">Reset</a></p>
+                <!--<p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>-->
+            </div>
+            <div class="row">
+                <% if (myactivity.length===0) { %>
+                    <div class="col-12">
+                        <br><br>
+                        <h1 class="text-center">Sorry, no results.</h1>
+                    </div>
+                    <% } else { %>
+                        <% for (let i=0; i < myactivity.length; i++) { %>
+                            <% const activity=myactivity[i]; %>
+                                <!-- Each card is in a column that spans 3 out of 12 columns -->
+                                <div class="col-md-3 mb-4">
+                                    <a href="/activity/<%= activity.id %>" class="card-link">
+                                        <div class="card h-100">
+                                            <% if (activity.image) { %>
+                                                <img src="/<%= activity.image.substring(activity.image.indexOf('/') + 1) %>"
+                                                    alt="Activity Image" class="card-img-top">
+                                                <% } else { %>
+                                                    <!-- Placeholder image or leave empty -->
+                                                    <img src="/path/to/placeholder-image.jpg" alt="No image available"
+                                                        class="card-img-top">
+                                                    <% } %>
+                                                        <div class="card-body">
+                                                            <h5 class="card-title">
+                                                                <%= activity.activity %>
+                                                            </h5>
+                                                            <p class="card-text">
+                                                                <%= activity.description %>
+                                                            </p>
+                                                            <p class="card-text">
+                                                                <%= activity.location %> - <%= activity.price %>
+                                                            </p>
+                                                        </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <% } %>
+                                    <% } %>
+            </div>
+        </div>
 
-  </footer><!-- End Footer -->
+        </div>
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+        </footer><!-- End Footer -->
 
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
+        <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+                class="bi bi-arrow-up-short"></i></a>
 
-  <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>
+        <!-- Vendor JS Files -->
+        <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+        <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+        <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+        <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+        <script src="assets/vendor/php-email-form/validate.js"></script>
 
-  <script>
-    document.getElementById("filterButton").addEventListener("click", function() {
-        document.getElementById("filterPopup").style.display = "block";
-        var overlay = document.createElement("div");
-        overlay.className = "overlay";
-        document.body.appendChild(overlay);
-        overlay.addEventListener("click", closePopup);
-    });
+        <!-- Template Main JS File -->
+        <script src="assets/js/main.js"></script>
 
-    document.getElementById("closeFilterPopup").addEventListener("click", closePopup);
+        <script>
+            document.getElementById("filterButton").addEventListener("click", function () {
+                document.getElementById("filterPopup").style.display = "block";
+                var overlay = document.createElement("div");
+                overlay.className = "overlay";
+                document.body.appendChild(overlay);
+                overlay.addEventListener("click", closePopup);
+            });
 
-    function closePopup() {
-        document.getElementById("filterPopup").style.display = "none";
-        var overlay = document.querySelector(".overlay");
-        if (overlay) document.body.removeChild(overlay);
-    }
-</script>
+            document.getElementById("closeFilterPopup").addEventListener("click", closePopup);
+
+            function closePopup() {
+                document.getElementById("filterPopup").style.display = "none";
+                var overlay = document.querySelector(".overlay");
+                if (overlay) document.body.removeChild(overlay);
+            }
+        </script>
 
 
 </body>
