@@ -14,7 +14,9 @@
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -47,11 +49,11 @@
 
       <nav id="navbar" class="navbar">
         <ul>
-            <li><a class="nav-link scrollto active" href="/">Home</a></li>
-            <!--<li><a class="nav-link scrollto" href="#Browse">Browse</a></li>-->
-            <li><a class="nav-link scrollto " href="/filter">Search</a></li>
-            <li><a class="nav-link scrollto" href="/add">Add</a></li>
-            <li><a class="nav-link scrollto" href="/account">Account</a></li>
+          <li><a class="nav-link scrollto" href="/">Home</a></li>
+          <!--<li><a class="nav-link scrollto" href="#Browse">Browse</a></li>-->
+          <li><a class="nav-link scrollto " href="/filter">Search</a></li>
+          <li><a class="nav-link scrollto" href="/add">Add</a></li>
+          <li><a class="nav-link scrollto" href="/account">Account</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -81,58 +83,58 @@
     </section>
     <br>
     <div>
-        <section class="inner-page">
-            <div class="container">
-              <p>
-                <form action="/storeData" method="post" enctype="multipart/form-data">
-                  
-                    <label for="activity">Activity:</label>
-                    <input type="activity" id="activity" name="activity" required><br><br>
-                    <label for="description">Description:</label><br>
-                    <textarea id="description" name="description" rows="4" required></textarea><br><br>
+      <section class="inner-page">
+        <div class="container">
+          <p>
+          <form action="/storeData" method="post" enctype="multipart/form-data">
+
+            <label for="activity">Activity:</label>
+            <input type="activity" id="activity" name="activity" required><br><br>
+            <label for="description">Description:</label><br>
+            <textarea id="description" name="description" rows="4" required></textarea><br><br>
 
 
-                    <label for="equipment">Requires equipment/gear?</label><br>
-                    <input type="radio" id="equipmentYes" name="equipment" value="True" onchange="requiresEquipment()">
-                    <label for="equipmentYes">Yes</label><br>
-                    <input type="radio" id="equipmentNo" name="equipment" value="False" checked onchange="requiresEquipment()">
-                    <label for="equipmentNo">No</label><br><br>
-                    <!-- Additional prompt that is initially hidden, shown only if 'Yes' is selected -->
-                    <div class="equipmentConditional-prompt">
-                        <label for="equipment_description">Description of required equipment:</label>
-                        <input type="text" id="equipment_description" name="equipment_description"><br><br>
-                    </div>
+            <label for="equipment">Requires equipment/gear?</label><br>
+            <input type="radio" id="equipmentYes" name="equipment" value="True" onchange="requiresEquipment()">
+            <label for="equipmentYes">Yes</label><br>
+            <input type="radio" id="equipmentNo" name="equipment" value="False" checked onchange="requiresEquipment()">
+            <label for="equipmentNo">No</label><br><br>
+            <!-- Additional prompt that is initially hidden, shown only if 'Yes' is selected -->
+            <div class="equipmentConditional-prompt">
+              <label for="equipment_description">Description of required equipment:</label>
+              <input type="text" id="equipment_description" name="equipment_description"><br><br>
+            </div>
 
-                    <!--<input type="checkbox" id="city" name="city" onchange="specificCity()">
+            <!--<input type="checkbox" id="city" name="city" onchange="specificCity()">
                     <label for="city">Is in a certain city?</label><br><br>
                     Additional prompt that is initially hidden 
                     <div class="cityConditional-prompt">
                         <label for="whichCity">Which city?</label>
                         <input type="text" id="whichCity" name="whichCity"><br><br>
                     </div>-->
-                    <label for="price">Price Range (per person):</label>
-                    <select id="price" name="price">
-                        <option value="free">Free</option>
-                        <option value="$0-$15">$0-$15</option>
-                        <option value="$15-$30">$15-$30</option>
-                        <option value="$30-50">$30-50</option>
-                        <option value="$50+">$50+</option>
-                    </select><br><br>
+            <label for="price">Price Range (per person):</label>
+            <select id="price" name="price">
+              <option value="free">Free</option>
+              <option value="$0-$15">$0-$15</option>
+              <option value="$15-$30">$15-$30</option>
+              <option value="$30-50">$30-50</option>
+              <option value="$50+">$50+</option>
+            </select><br><br>
 
-                    <label for="location">City Location:</label><br>
-                    <select id="location" name="location">
-                      <option value="Provo">Provo</option>
-                      <option value="Orem">Orem</option>
-                      <option value="Lehi">Lehi</option>
-                      <option value="American Fork">American Fork</option>
-                      <option value="Salt Lake City">Salt Lake City</option>
-                      <option value="Midway">Midway</option>
-                      <option value="Park City">Park City</option>
-                      <option value="Other">Other</option>
-                      <option value="Doesn't Matter">Doesn't Matter</option>
-                    </select><br><br>
-                    
-                    <!-- If we want the Type to be a drop down, use this:
+            <label for="location">City Location:</label><br>
+            <select id="location" name="location">
+              <option value="Provo">Provo</option>
+              <option value="Orem">Orem</option>
+              <option value="Lehi">Lehi</option>
+              <option value="American Fork">American Fork</option>
+              <option value="Salt Lake City">Salt Lake City</option>
+              <option value="Midway">Midway</option>
+              <option value="Park City">Park City</option>
+              <option value="Other">Other</option>
+              <option value="Doesn't Matter">Doesn't Matter</option>
+            </select><br><br>
+
+            <!-- If we want the Type to be a drop down, use this:
                     <label for="type">Type:</label>
                     <select id="type" name="type">
                         <option value="free">Just me, myself, & I</option>
@@ -140,129 +142,131 @@
                         <option value="dateNight">Date night with my significant other</option>
                         <option value="group">Group activity</option>
                     </select><br> -->
-                    <label for="type">Type:</label><br>
-                    <select id="type" name="type">
-                      <option value="Just me, myself, & I">Just me, myself, & I</option>
-                      <option value="First date">First date</option>
-                      <option value="Date night with my significant other">Date night with my significant other</option>
-                      <option value="Group activity">Group activity</option>
-                    </select><br><br>
-                    
-                    <label for="duration_slider">Duration (in hours):</label>
-                    <div class="slider-container">
-                        <input type="range" id="duration_slider" name="duration_slider" min="0" max="10" step="1" value="5" list="tickmarks">
-                        <div class="number-label">
-                            <!-- <span>0</span> -->
-                            <span>1</span>
-                            <span>2</span>
-                            <span>3</span>
-                            <span>4</span>
-                            <span>5</span>
-                            <span>6</span>
-                            <span>7</span>
-                            <span>8</span>
-                            <span>9</span>
-                            <!-- <span>10</span> -->
-                        </div>
-                    </div>
-                    <datalist id="duration" name="duration">
-                        <!-- <option value="0" label="0"> -->
-                        <option value="1" label="1">
-                        <option value="2" label="2">
-                        <option value="3" label="3">
-                        <option value="4" label="4">
-                        <option value="5" label="5">
-                        <option value="6" label="6">
-                        <option value="7" label="7">
-                        <option value="8" label="8">
-                        <option value="9" label="9">
-                        <!-- <option value="10" label="10"> -->
-                    </datalist><br><br>
+            <label for="type">Type:</label><br>
+            <select id="type" name="type">
+              <option value="Just me, myself, & I">Just me, myself, & I</option>
+              <option value="First date">First date</option>
+              <option value="Date night with my significant other">Date night with my significant other</option>
+              <option value="Group activity">Group activity</option>
+            </select><br><br>
 
-                    <label for="time_of_day">Time of Day:</label><br>
-                        <select id="time_of_day" name="time_of_day">
-                        <option value="Morning">Morning</option>
-                        <option value="Afternoon">Afternoon</option>
-                        <option value="Evening">Evening</option>
-                        <option value="Doesn't Matter">Doesn't Matter</option>
-                        </select><br><br>
+            <label for="duration_slider">Duration (in hours):</label>
+            <div class="slider-container">
+              <input type="range" id="duration_slider" name="duration_slider" min="0" max="10" step="1" value="5"
+                list="tickmarks">
+              <div class="number-label">
+                <!-- <span>0</span> -->
+                <span>1</span>
+                <span>2</span>
+                <span>3</span>
+                <span>4</span>
+                <span>5</span>
+                <span>6</span>
+                <span>7</span>
+                <span>8</span>
+                <span>9</span>
+                <!-- <span>10</span> -->
+              </div>
+            </div>
+            <datalist id="duration" name="duration">
+              <!-- <option value="0" label="0"> -->
+              <option value="1" label="1">
+              <option value="2" label="2">
+              <option value="3" label="3">
+              <option value="4" label="4">
+              <option value="5" label="5">
+              <option value="6" label="6">
+              <option value="7" label="7">
+              <option value="8" label="8">
+              <option value="9" label="9">
+                <!-- <option value="10" label="10"> -->
+            </datalist><br><br>
 
-                        <label for="season">Season:</label><br>
-                        <select id="season" name="season">
-                          <option value="Spring">Spring</option>
-                          <option value="Summer">Summer</option>
-                          <option value="Fall">Fall</option>
-                          <option value="Winter">Winter</option>
-                          <option value="Doesn't Matter">Doesn't Matter</option>
-                        </select><br><br>
-                        
-                        <label for="indoor_outdoor">Activity Location:</label><br>
-                        <select id="indoor_outdoor" name="indoor_outdoor">
-                          <option value="Indoors">Indoors</option>
-                          <option value="Outdoors">Outdoors</option>
-                          <option value="Doesn't Matter">Doesn't Matter</option>
-                        </select><br><br>
+            <label for="time_of_day">Time of Day:</label><br>
+            <select id="time_of_day" name="time_of_day">
+              <option value="Morning">Morning</option>
+              <option value="Afternoon">Afternoon</option>
+              <option value="Evening">Evening</option>
+              <option value="Doesn't Matter">Doesn't Matter</option>
+            </select><br><br>
 
-                    <label>Involves food?</label><br>
-                    <input type="radio" id="foodYes" name="food" value="True">
-                    <label for="foodYes">Yes</label><br>
-                    <input type="radio" id="foodNo" name="food" value="False">
-                    <label for="foodNo">No</label>
-                    <br><br>
-                    <label for="activityImage">Upload Image:</label>
-                    <input type="file" id="activityImage" name="activityImage" accept="image/*" required><br><br>
-                    <br><br>
-                    <!--functions for conditional prompts-->
-                    <script>
-                        function requiresEquipment() {
-                            var radioYes = document.getElementById("equipmentYes");
-                            var promptContainer = document.querySelector(".equipmentConditional-prompt");
-                    
-                            // Display the prompt only if the 'Yes' radio button is checked
-                            promptContainer.style.display = radioYes.checked ? "block" : "none";
-                        }
-                    
-                        // Initial call to set the correct display state when the page loads
-                        window.onload = requiresEquipment;
-                    </script>
-                    <button type="submit">Submit Activity Now.</button>
-                </form>
-                <br><br>
-    </div>
-    <!-- ======= Cta Section ======= -->
-    <section id="cta" class="cta">
-        <div class="container">
-          <div class="text-center">
-            <h3>Add Activities Now.</h3>
-            <p></p>
-            <a class="cta-btn" href=''>Search</a>
-          </div>
+            <label for="season">Season:</label><br>
+            <select id="season" name="season">
+              <option value="Spring">Spring</option>
+              <option value="Summer">Summer</option>
+              <option value="Fall">Fall</option>
+              <option value="Winter">Winter</option>
+              <option value="Doesn't Matter">Doesn't Matter</option>
+            </select><br><br>
+
+            <label for="indoor_outdoor">Activity Location:</label><br>
+            <select id="indoor_outdoor" name="indoor_outdoor">
+              <option value="Indoors">Indoors</option>
+              <option value="Outdoors">Outdoors</option>
+              <option value="Doesn't Matter">Doesn't Matter</option>
+            </select><br><br>
+
+            <label>Involves food?</label><br>
+            <input type="radio" id="foodYes" name="food" value="True">
+            <label for="foodYes">Yes</label><br>
+            <input type="radio" id="foodNo" name="food" value="False">
+            <label for="foodNo">No</label>
+            <br><br>
+            <label for="activityImage">Upload Image:</label>
+            <input type="file" id="activityImage" name="activityImage" accept="image/*" required><br><br>
+            <br><br>
+            <!--functions for conditional prompts-->
+            <script>
+              function requiresEquipment() {
+                var radioYes = document.getElementById("equipmentYes");
+                var promptContainer = document.querySelector(".equipmentConditional-prompt");
+
+                // Display the prompt only if the 'Yes' radio button is checked
+                promptContainer.style.display = radioYes.checked ? "block" : "none";
+              }
+
+              // Initial call to set the correct display state when the page loads
+              window.onload = requiresEquipment;
+            </script>
+            <button type="submit">Submit Activity Now.</button>
+          </form>
+          <br><br>
         </div>
-    </section>
-    <br>
+        <!-- ======= Cta Section ======= -->
+        <section id="cta" class="cta">
+          <div class="container">
+            <div class="text-center">
+              <h3>Add Activities Now.</h3>
+              <p></p>
+              <a class="cta-btn" href=''>Search</a>
+            </div>
+          </div>
+        </section>
+        <br>
     </div>
-      <div class="social-links text-center text-md-right pt-3 pt-md-0">
-        <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-        <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-        <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-        <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-        <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-      </div>
+    <div class="social-links text-center text-md-right pt-3 pt-md-0">
+      <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+      <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+      <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+      <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+      <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
     </div>
-  </footer><!-- End Footer -->
+    </div>
+    </footer><!-- End Footer -->
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+        class="bi bi-arrow-up-short"></i></a>
 
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
+    <!-- Vendor JS Files -->
+    <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="assets/vendor/php-email-form/validate.js"></script>
 
-  <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>
+    <!-- Template Main JS File -->
+    <script src="assets/js/main.js"></script>
 
 </body>
 
