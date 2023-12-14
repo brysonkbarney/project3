@@ -369,8 +369,8 @@ app.get("/getRandomRecord", async (req, res) => {
     const totalRecords = await knex("activity").count("id").first();
     const totalCount = totalRecords.count;
 
-    // Step 2: Generate a random number within the bounds (considering records start at 1000)
-    const randomIndex = Math.floor(Math.random() * totalCount) + 1005;
+    // Step 2: Generate a random number within the bounds (considering records start at 1005)
+    const randomIndex = Math.floor(Math.random() * totalCount) + 1010;
 
     // Step 3: Use the random number to select the corresponding record
     const randomRecord = await knex("activity")
